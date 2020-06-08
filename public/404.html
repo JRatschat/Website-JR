@@ -205,6 +205,44 @@
 
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168828209-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-168828209-1', { 'anonymize_ip': true });
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
   
 
 
@@ -535,12 +573,6 @@
   <h2>Latest</h2>
   <ul>
     
-      <li><a href="/courses/example/example1/">Example Page 1</a></li>
-    
-      <li><a href="/courses/example/example2/">Example Page 2</a></li>
-    
-      <li><a href="/talk/example/">Example Talk</a></li>
-    
       <li><a href="/post/an-expert-is-made-not-born/">An Expert is Made, Not Born</a></li>
     
       <li><a href="/post/how-to-collect-data-for-your-analysis/">How to Collect Data for Your Analysis</a></li>
@@ -554,6 +586,10 @@
       <li><a href="/project/boosting-gradient-boosting-interpretability/">Boosting Gradient Boosting Interpretability</a></li>
     
       <li><a href="/project/financial-literacy/">Financial Literacy and Stock Market Participation</a></li>
+    
+      <li><a href="/terms/">Impressum</a></li>
+    
+      <li><a href="/project/techacademy/">TechAcademy</a></li>
     
   </ul>
   
