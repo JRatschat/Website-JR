@@ -1,1 +1,2 @@
-http://jratschat.rbind.io/*      https://jratschat.rbind.io/:splat  301!
+http://jratschat.rbind.io/*                   https://jratschat.rbind.io/:splat  301!
+https://frosty-cori-4e5483.netlify.app/       https://jratschat.rbind.io/:splat  301!
