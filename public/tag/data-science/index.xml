@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Science | </title>
+    <link>/tag/data-science/</link>
+      <atom:link href="/tag/data-science/index.xml" rel="self" type="application/rss+xml" />
+    <description>Data Science</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 06 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon.png</url>
+      <title>Data Science</title>
+      <link>/tag/data-science/</link>
+    </image>
+    
+    <item>
+      <title>How to Collect Data for Your Analysis</title>
+      <link>/post/how-to-collect-data-for-your-analysis/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/post/how-to-collect-data-for-your-analysis/</guid>
+      <description>&lt;p&gt;&lt;em&gt;This article was first published on 
+&lt;a href=&#34;https://towardsdatascience.com/how-to-collect-data-for-your-analysis-a8bc58043e64&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Medium&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;How great would it be when data could be as easily accessed as on Kaggle?&lt;/p&gt;
+&lt;p&gt;Data collection? Just visit Kaggle, find a suitable data set, and download it. How about analyzing the Titanic incident from 1912? Or how about image recognition of flowers? No? Maybe you want to predict credit card fraud detection? Guess what, Kaggle has you covered.&lt;/p&gt;
+&lt;p&gt;When you have decided on your data set of interest, the fun can finally start. Taking 5 minutes to find a suitable data set was already stressful enough, right? The most elaborate machine algorithms are waiting for you. So ultimately, who cares about the data?&lt;/p&gt;
+&lt;p&gt;Sadly, the real world is different. Having the right data and data quality are key to making causal statements or to constructing machine learning algorithms that can really have an impact. Without relevant data, your analyses would be fun, but irrelevant.&lt;/p&gt;
+&lt;p&gt;Obviously, you cannot always find perfectly preprocessed data that fulfill your needs. Also, you need to understand where the data has come from and how it was built. Ultimately, we need to keep in mind what Kaggle is.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It is most famous for being a place in which one can enter competitions to solve data science challenges.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So if you want to make a name for yourself as a serious predictive modeler, you have found the perfect website to show off your skills. If you’re going to gather data to write a research paper or to build something that works in the real world, Kaggle could be the wrong source for your data.&lt;/p&gt;
+&lt;p&gt;In my experience, data collection and preparation can take days to complete. What I have done so far is to build data sets from scratch and access data sets from government institutions. Both have their limitations.&lt;/p&gt;
+&lt;p&gt;What I want to show you is a practical introduction to how you could create relevant data sets that support you in your research/machine learning goals.
+Let’s get started.&lt;/p&gt;
+&lt;p&gt;First, you have to assess the following two questions to conduct your analysis.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;What kind of data do you need?&lt;/li&gt;
+&lt;li&gt;How can you access it?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Answering these questions is critical but not always straightforward. Of course, a Google search could lead to results, but asking peers for advice could also be helpful. Spend some time with these questions until you’re sure that you have found the right answer.&lt;/p&gt;
+&lt;h2 id=&#34;1-building-a-data-set-from-scratch&#34;&gt;1. Building a data set from scratch&lt;/h2&gt;
+&lt;p&gt;In one of my projects, I needed to access financial data from German companies to analyze the effect of a new mandatory accounting standard on bid-ask spreads.&lt;/p&gt;
+&lt;p&gt;Luckily, my professor supplied us with a Thomson Reuters account, and I could use Datastream to access the financial data of these companies. You would think that simply using this database would be sufficient and that I could finally do the real work.&lt;/p&gt;
+&lt;p&gt;False! When gathering the data for these companies, I ended up with 8 different excel sheets that I had to somehow merge into one data frame.&lt;/p&gt;
+&lt;p&gt;Datastream provided me with some static company information that would end up as my main sheet.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/76a060e7e11a14059ea4b74ffe709c14.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;The other excel sheets that I got had the following format because I was accessing time-series data for each company.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/5192b85df1cd7723597f1a978abbf8bf.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;So how can I get such data into a meaningful format so that I can use it along with the other company information?&lt;/p&gt;
+&lt;p&gt;Let’s perform one of my calculations so that you get the idea. I had two sheets — one for bid prices and one for ask prices. What I needed was the average relative bid-ask spread.&lt;/p&gt;
+&lt;p&gt;First, I loaded the data and controlled for missing values. I spotted one row that was completely missing and deleted it for both data sets.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/2370fb9bb52695789bc00109990a5f2c.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;Then I calculated the bid-ask spread by subtracting the bid price from the ask price.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/c0fcd949a42ec26f878820dbfdc12dd2.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code class=&#34;language-&amp;gt;&#34;&gt;&#39;data.frame&#39;: 152 obs. of  50 variables:
+$ D.AB1 : num  0.034 0.069 0.038 ...
+$ D.AOX : num  0.38 0.36 0.38 ...
+$ D.AAD : num  0.38 0.4 0.36 ...
+$ D.CAG : num  0.04 0.1 0.04 ...
+$ D.B5A : num  0.36 0.395 0.395 ...
+$ D.BDT : num  0.37 0.75 1 ...
+$ D.BIO3: num  0.84 0.82 0.82 ...
+$ D.O2C : num  0.151 0.15 0.15 ...
+$ D.CEV : num  0.305 0.295 0.2 ...
+$ D.CWC : num  0.535 1.175 1.335 ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then I had to calculate the relative bid-ask spread. Therefore, I had to import the daily stock prices, deleted the 149th row, and calculated the bid-ask spreads relative to the price.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/a315f1a9f4d23e484b8b22a3a63005a3.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;Finally, I calculated the mean of the relative bid-ask spreads and merged it into the static data frame.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/077571824c7fc5ccbeba86985aaab480.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code class=&#34;language-&amp;gt;&#34;&gt;&#39;data.frame&#39;: 50 obs. of  6 variables:
+$ MNEM                 : chr  &amp;quot;D.2HRA&amp;quot; &amp;quot;D.AAD&amp;quot; &amp;quot;D.AB1&amp;quot; ...
+$ NAME                 : chr  &amp;quot;H &amp;amp; R&amp;quot; &amp;quot;AMADEUS FIRE&amp;quot; ...
+$ WC05350              : POSIXct, format: &amp;quot;2011-12-31&amp;quot; ...
+$ MV                   : num  644 150 331 638 622 ...
+$ NOSHFF               : num  44 74 63 44 52 45 100 ...
+$ mean_relative_bid_ask: num  0.0138 0.0139 0.0163 ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is only the code for one additional variable! Imagine doing that for 20 or even 30 other variables that you cannot get out-of-the-box from Datastream. This takes way longer than 5 minutes.&lt;/p&gt;
+&lt;p&gt;There are many other feasible methods of how you can create your own data set from scratch. You could, for example, conduct a good old survey or scrape tweets from Twitter. Ultimately, it depends on what kind of data you need.&lt;/p&gt;
+&lt;p&gt;Okay, it’s time for a quick assessment.&lt;/p&gt;
+&lt;p&gt;Advantages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Features are included based on the purpose of the research question or task. Not vice versa. This helps to only use meaningful data.&lt;/li&gt;
+&lt;li&gt;It is traceable how the variables were created.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Disadvantages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It can be challenging to find suitable sources.&lt;/li&gt;
+&lt;li&gt;It takes a lot of time to gather the data.&lt;/li&gt;
+&lt;li&gt;Transforming features into the right format can be a lot of effort.&lt;/li&gt;
+&lt;li&gt;Access to databases like Thomson Reuters is often restricted. If your university or employer does not have a license, this kind of information can get very costly.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-using-a-data-set-from-a-governmental-institution&#34;&gt;2. Using a data set from a governmental institution&lt;/h2&gt;
+&lt;p&gt;One could think that accessing data from governmental institutions is as easy as obtaining data from Kaggle. Wrong! Often, you have to put in a lot of time to understand the data.&lt;/p&gt;
+&lt;p&gt;So for another project, I wanted to research the effect of financial literacy on stock market participation. For assessing this research question, I found quite a lot of research papers that made use of the Survey of Consumer Finances to analyze stock market participation. Therefore, I accessed the newest version (2016) of this cross-sectional survey of US families.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Little did I know how difficult understanding and working with this data set would be.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So the SEC has published all relevant data here. I spend a substantial time finding the right data set. First, I tried out the R-implementation, but in the end, I found it too difficult to use. Then, I accidentally downloaded the summary extract and wondered why the data was so different than described in the codebook. After a long journey of losing my mind, I found the complete data that I would be using for my analyses.&lt;/p&gt;
+&lt;p&gt;When looking at the data, I found that all variables were encoded. I had to use this codebook to make sense of the data. For every single variable…&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/611f83af96c0a0cddfa3d30eb3176669.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;The codebook is really really long. Even the SEC notes on the first lines of the codebook the crazy size of this document. It contains about 45,000 lines of text. They recommend to not print the entire document. Great advice…&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;./SEC.png&#34; alt=&#34;&#34;/&gt;
+  &lt;figcaption&gt;First lines of the SCF’s Codebook.
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;I spend many hours finding the questions that I could use to create meaningful variables. Ever used the search tool in Chrome? I probably used it 10,000 times for finding the right variables.&lt;/p&gt;
+&lt;p&gt;Luckily, the summary extract that I first downloaded proofed to be helpful. Instead of calculating the numerous financial information of the households in R, I just merged this data set to the complete survey data set. Funny story: The calculations are specified in a SAS script. I attempted to translate it into R. After wasting two hours, I remembered the summary extract…&lt;/p&gt;
+&lt;p&gt;Finally, I had a data set that I could start to analyze. But of course, I had many more problems with it. Have you ever heard of weighting and multiple imputations? These topics are difficult and painful, at least for me. But this is another story to tell.&lt;/p&gt;
+&lt;p&gt;Of course, the SCF is only one of the numerous available governmental data sets. And besides governmental data, there are also data sets from organizations like the 
+&lt;a href=&#34;https://data.worldbank.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;World Bank&lt;/a&gt;, 
+&lt;a href=&#34;https://www.who.int/gho/database/en/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;WHO&lt;/a&gt;, or 
+&lt;a href=&#34;https://www.iatiregistry.org/publisher/unicef&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Unicef&lt;/a&gt;. Some might be much easier to handle.&lt;/p&gt;
+&lt;p&gt;Again, a quick assessment.&lt;/p&gt;
+&lt;p&gt;Advantages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Commonly high data quality. Especially if the data has been used by other researchers or practitioners.&lt;/li&gt;
+&lt;li&gt;Often data is well documented. Therefore, one can understand how the variables were created.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Disadvantages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It can take a lot of time to gather and transform features (think about the 45,000 lines of text).&lt;/li&gt;
+&lt;li&gt;It can be hard to understand the data sets.&lt;/li&gt;
+&lt;li&gt;Access is sometimes only given on a request basis.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;So what have we learned? Accessing data can be quite a hassle and takes time. Loading data and being ready to rumble? No, this is unrealistic.&lt;/p&gt;
+&lt;p&gt;But what collecting data the old way (not on Kaggle) ultimately does is that we must ask ourselves the right questions. We have to think before we have the data. Why? Because collecting data is a lot of effort. This means that we hopefully collect and use meaningful data for our analyses.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Keep in mind that an analysis can only be as good as the quality of the data.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;If you have any questions or comments, feel free to reach me via the contact field or 
+&lt;a href=&#34;https://linkedin.com/in/jonathan-ratschat&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LinkedIn&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Getting to a Hyperparameter-Tuned XGBoost Model in No Time</title>
+      <link>/post/getting-to-a-hyperparameter-tuned-xgboost-model-in-no-time/</link>
+      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+      <guid>/post/getting-to-a-hyperparameter-tuned-xgboost-model-in-no-time/</guid>
+      <description>&lt;p&gt;&lt;em&gt;This article was first published on 
+&lt;a href=&#34;https://towardsdatascience.com/getting-to-an-hyperparameter-tuned-xgboost-model-in-no-time-a9560f8eb54b&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Medium&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s face it. You&amp;rsquo;re an aspiring Data Scientist. You need to desperately solve a classification task either to impress your professor or to finally become one of these mysterious Kaggle winners. The problem is that you&amp;rsquo;ve got no time. The presentation or the Kaggle competition is due in 24 hours. Of course, you could stick to a simple logit regression and call it a day. &amp;ldquo;No, not this time!&amp;rdquo; you think, and you&amp;rsquo;re browsing the web to find THE SOLUTION. But it better be fast.&lt;/p&gt;
+&lt;p&gt;Okay, this is a highly improbable event. However, I wanted to share an easy XGBoost implementation that proved to be lightning-fast (compared to other solutions) that can help you to achieve a more stable and accurate model.&lt;/p&gt;
+&lt;p&gt;Hyperparameter-tuning was the step in which I lost most of my &amp;ldquo;valuable&amp;rdquo; time. I had to choose between different options ranging from manually trying out different hyperparameter combinations to more advanced methods like grid or random search. I felt overwhelmed. Ultimately, it took quite a while to find a technique that fulfilled my needs. Therefore, the focus will be on this step of building an XGBoost model.&lt;/p&gt;
+&lt;p&gt;Why are we using XGBoost again? Because it rocks. It is an optimized distributed gradient boosting library that has been used with great success on many machine learning challenges. Among the advantages of XGBoost are that its models are easily scalable, tend to avoid overfitting, and can be used for a wide range of problems [1].&lt;/p&gt;
+&lt;p&gt;Of course, only preparing the data and executing XGBoost would somehow work. But clearly, there is no free lunch in data science. This procedure would leave you with a model that is most likely overfitted and therefore performs badly on an out-of-sample data set. Meaning: you have created a useless model that you should not use with other data.&lt;/p&gt;
+&lt;p&gt;Luckily, XGBoost offers several ways to make sure that the performance of the model is optimized. Hyperparameter-tuning is the last part of the model building and can increase your model&amp;rsquo;s performance. Tuning is a systematic and automated process of varying parameters to find the &amp;ldquo;best&amp;rdquo; model.&lt;/p&gt;
+&lt;p&gt;In my opinion, learning is best done through a reproducible example, so please feel free to copy the code and run it in RStudio (or any other IDE) if you are experiencing any troubles with my explanations. I assume a basic understanding of machine learning, so please use Google if anything is not clear.&lt;/p&gt;
+&lt;p&gt;In the first part, I build (together with you) a basic XGBoost model. Thus, we are loading, preparing, and transforming the data, and at the end of this section, we will have received our first results. In the second part, I discuss my experiences with several hyperparameter-tuning methods. For our final model, we will use a random search algorithm to increase the predictive accuracy of our binary classification task.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s get started.&lt;/p&gt;
+&lt;h2 id=&#34;building-an-xgboost-model-with-mostly-default-parameters&#34;&gt;Building an XGBoost model with (mostly) default parameters&lt;/h2&gt;
+&lt;p&gt;I chose to use the famous Titanic data set from Kaggle. If you have a Kaggle account, you can get the data here. If you don&amp;rsquo;t have a Kaggle account, you can also check out my GitHub repository, where you&amp;rsquo;ll find the data sets and the scripts of this blog post. As an aspiring data scientist, you most likely have at least one of these accounts.&lt;/p&gt;
+&lt;p&gt;Our task is to predict whether a passenger survived the tragic titanic incident or not - a typical binary classification task.&lt;/p&gt;
+&lt;p&gt;First, we load the necessary packages and train.csv and test.csv. Then we can have a look at the structure of the data.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/b620655cb2b53da232289360dad8beab.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code class=&#34;language-&amp;gt;&#34;&gt;&#39;data.frame&#39;: 891 obs. of  12 variables:
+  $ PassengerId: int  1 2 3 4 5 6 7 8 9 10 ...
+$ Survived   : int  0 1 1 1 0 0 0 0 1 1 ...
+$ Pclass     : int  3 1 3 1 3 3 1 3 3 2 ...
+$ Name       : chr  &amp;quot;Braund, Mr. Owen Harris&amp;quot; &amp;quot;Cumings, Mrs. John Bradley (Florence Briggs Thayer)&amp;quot; &amp;quot;Heikkinen, Miss. Laina&amp;quot; &amp;quot;Futrelle, Mrs. Jacques Heath (Lily May Peel)&amp;quot; ...
+$ Sex        : chr  &amp;quot;male&amp;quot; &amp;quot;female&amp;quot; &amp;quot;female&amp;quot; &amp;quot;female&amp;quot; ...
+$ Age        : num  22 38 26 35 35 NA 54 2 27 14 ...
+$ SibSp      : int  1 1 0 1 0 0 0 3 0 1 ...
+$ Parch      : int  0 0 0 0 0 0 0 1 2 0 ...
+$ Ticket     : chr  &amp;quot;A/5 21171&amp;quot; &amp;quot;PC 17599&amp;quot; &amp;quot;STON/O2. 3101282&amp;quot; &amp;quot;113803&amp;quot; ...
+$ Fare       : num  7.25 71.28 7.92 53.1 8.05 ...
+$ Cabin      : chr  &amp;quot;&amp;quot; &amp;quot;C85&amp;quot; &amp;quot;&amp;quot; &amp;quot;C123&amp;quot; ...
+$ Embarked   : chr  &amp;quot;S&amp;quot; &amp;quot;C&amp;quot; &amp;quot;S&amp;quot; &amp;quot;S&amp;quot; ...
+
+&amp;gt; str(test)
+&#39;data.frame&#39;: 418 obs. of  11 variables:
+  $ PassengerId: int  892 893 894 895 896 897 898 899 900 901 ...
+$ Pclass     : int  3 3 2 3 3 3 3 2 3 3 ...
+$ Name       : chr  &amp;quot;Kelly, Mr. James&amp;quot; &amp;quot;Wilkes, Mrs. James (Ellen Needs)&amp;quot; &amp;quot;Myles, Mr. Thomas Francis&amp;quot; &amp;quot;Wirz, Mr. Albert&amp;quot; ...
+$ Sex        : chr  &amp;quot;male&amp;quot; &amp;quot;female&amp;quot; &amp;quot;male&amp;quot; &amp;quot;male&amp;quot; ...
+$ Age        : num  34.5 47 62 27 22 14 30 26 18 21 ...
+$ SibSp      : int  0 1 0 0 1 0 0 1 0 2 ...
+$ Parch      : int  0 0 0 0 1 0 0 1 0 0 ...
+$ Ticket     : chr  &amp;quot;330911&amp;quot; &amp;quot;363272&amp;quot; &amp;quot;240276&amp;quot; &amp;quot;315154&amp;quot; ...
+$ Fare       : num  7.83 7 9.69 8.66 12.29 ...
+$ Cabin      : chr  &amp;quot;&amp;quot; &amp;quot;&amp;quot; &amp;quot;&amp;quot; &amp;quot;&amp;quot; ...
+$ Embarked   : chr  &amp;quot;Q&amp;quot; &amp;quot;S&amp;quot; &amp;quot;Q&amp;quot; &amp;quot;S&amp;quot; ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After getting an overview, we need to perform data preparation and feature engineering tasks. I just used some common sense and looked for some examples on Kaggle. Feature engineering is not the focus of this post. Therefore, I stick to the basics. But be aware that feature engineering is generally a crucial step and can significantly enhance the performance of your model. If you are not writing a blog post about hyperparameter-tuning, then spend much more time on this step! If you need individual guidance with excellent explanations, have a look here.&lt;/p&gt;
+&lt;p&gt;To perform these tasks, we bind the rows of the train and test set into one data frame. XGBoost needs to be able to work with the data. Therefore, we need to one-hot encode the data sets into sparse matrices. This is done because XGBoost only works with numeric or integer variables. Since we have factor variables in our data sets, the following approach creates one column per feature level. So instead of one row for Pclass, we will obtain the rows Pclass1, Pclass2, and Pclass3. This is also the reason why I put train and test set into one data set. Previously, when performing these tasks independently, the structure of the data got messed up.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/eafe53798b153c617c59c16e4a4ab334.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;After conducting the data preparation and the feature engineering tasks, we split train and test set again.&lt;/p&gt;
+&lt;p&gt;After these steps, the structure of the train and test data set is the same. Only the Survived variable is not present in the test set.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-&amp;gt;&#34;&gt;&#39;data.frame&#39;: 891 obs. of  13 variables:
+  $ Pclass1  : num  0 1 0 1 0 0 1 0 0 0 ...
+$ Pclass2  : num  0 0 0 0 0 0 0 0 0 1 ...
+$ Pclass3  : num  1 0 1 0 1 1 0 1 1 0 ...
+$ Sexmale  : num  1 0 0 0 1 1 1 1 0 0 ...
+$ Age      : num  22 38 26 35 35 NA 54 2 27 14 ...
+$ SibSp    : num  1 1 0 1 0 0 0 3 0 1 ...
+$ Parch    : num  0 0 0 0 0 0 0 1 2 0 ...
+$ Fare     : num  7.25 71.28 7.92 53.1 8.05 ...
+$ EmbarkedC: num  0 1 0 0 0 0 0 0 0 1 ...
+$ EmbarkedQ: num  0 0 0 0 0 1 0 0 0 0 ...
+$ EmbarkedS: num  1 0 1 1 1 0 1 1 1 0 ...
+$ Family   : num  1 1 0 1 0 0 0 4 2 1 ...
+$ Survived : int  0 1 1 1 0 0 0 0 1 1 ...
+
+&amp;gt; str(test)
+&#39;data.frame&#39;: 418 obs. of  12 variables:
+  $ Pclass1  : num  0 0 0 0 0 0 0 0 0 0 ...
+$ Pclass2  : num  0 0 1 0 0 0 0 1 0 0 ...
+$ Pclass3  : num  1 1 0 1 1 1 1 0 1 1 ...
+$ Sexmale  : num  1 0 1 1 0 1 0 1 0 1 ...
+$ Age      : num  34.5 47 62 27 22 14 30 26 18 21 ...
+$ SibSp    : num  0 1 0 0 1 0 0 1 0 2 ...
+$ Parch    : num  0 0 0 0 1 0 0 1 0 0 ...
+$ Fare     : num  7.83 7 9.69 8.66 12.29 ...
+$ EmbarkedC: num  0 0 0 0 0 0 0 0 1 0 ...
+$ EmbarkedQ: num  1 0 1 0 0 0 1 0 0 0 ...
+$ EmbarkedS: num  0 1 0 1 1 1 0 1 0 1 ...
+$ Family   : num  0 1 0 0 2 0 0 2 0 2 ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Remember the overfitting problem that I talked about? To obtain a better model, this problem needs to be prevented while ensuring that the model learns the generalized underlying relationships of the features with the target variable. So we use the train set and split it into a training and a validation set. We use 80% of the passengers for training the model and 20% for the validation of the model. Keep on waiting. I will explain what the validation set does in a few paragraphs.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/653426424936cc3d03da607f714fa557.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;Afterward, we will create xgb.DMatrices. These are optimized matrices for XGBoost. The label attribute specifies the target variable. We cannot specify a label for the test set since we do not have any information about it.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/8162866c15fc4762f5929b17c60302c0.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;Finally, we can train our first XGBoost model. We use the xgboost.train() command, and the gradient booster tree and the objective of binary classification are specified. The maximum number of iterations is set to 1,000. After these settings, the boosting algorithm could be implemented without further specifications on the training set. When keeping the default values, the algorithm would create 1,000 iterations of the model.&lt;/p&gt;
+&lt;p&gt;What is the problem here? Imagine you are setting the number of iterations to a high number. Then the model iterates forever, and in the end, you would get an accuracy of 100% on your training data. When testing this model on the test set, something strange would happen. “Why do I have only [put any low number here]% accuracy?! I thought my model was perfect!”. True, perfect in the sense that it perfectly describes the underlying data of your training set. Generalizable on other data? No.&lt;/p&gt;
+&lt;p&gt;To prevent this behavior, we create the validation set that I have talked about. We use the training set to train a model. But instead of training it until eternity, we set the early_stopping_rounds parameter to 50. Setting this parameter is important because it will stop the training of the model when the accuracy of the validation set has not improved for the specified number of rounds. When this is the case, then the algorithm automatically chooses the iteration with the highest accuracy. This setting prevents our overfitting problem.&lt;/p&gt;
+&lt;p&gt;In the following figure, you can quickly see this behavior. I display accuracy (1-error) and AUC of an XGBoost model depending on the iteration for the training and the validation set. Following my explanations, the training set would quickly reach an accuracy of 96% after 60 rounds. Luckily, our algorithm detects that the validation accuracy is not improving after ten iterations and therefore stops the algorithm at this iteration. Interestingly, the AUC is improving until round 60, so when changing the evaluation metric, we would get another result. Therefore, a change in the evaluation metric can lead to different results. Since we want to optimize the accuracy of the model, we stick to accuracy as an evaluation metric.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;./Accuracy_AUC.png&#34; alt=&#34;&#34;/&gt;
+  &lt;figcaption&gt;Accuracy and AUC by Iteration of a XGBoost Model. Plot created by author.&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;Okay, now it’s time to reveal the default XGBoost algorithm. Specifying the watchlist is an important step here because it is the parameter that tells XGBoost to stop iterating when the validation accuracy (1-error) does not improve anymore.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/bf54634575d40158059c039744abb904.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code class=&#34;language-[1]&#34;&gt;Multiple eval metrics are present. Will use val_error for early stopping.
+Will train until val_error hasn&#39;t improved in 50 rounds.
+[11] train-auc:0.959340 train-error:0.099719 val-auc:0.856732 val-error:0.139665 
+[21] train-auc:0.970900 train-error:0.085674 val-auc:0.858648 val-error:0.134078 
+[31] train-auc:0.981661 train-error:0.070225 val-auc:0.860495 val-error:0.145251 
+[41] train-auc:0.988527 train-error:0.051966 val-auc:0.865969 val-error:0.145251 
+[51] train-auc:0.992277 train-error:0.042135 val-auc:0.868979 val-error:0.156425 
+Stopping. Best iteration:
+[10] train-auc:0.959241 train-error:0.101124 val-auc:0.853243 val-error:0.128492
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We then predict Survival of the validation set with our model. We display our results with the confusionMatrix command. Ahhhh important information: this is only the result of our validation set! Right now, we want to get a feeling of how good our model COULD be. Please do not confuse it with the test that we will perform afterward with the test set.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/95f936add95193619b24b03a21bf176c.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Actual&#34;&gt;Prediction     Not Survived Survived
+Not Survived          109       16
+Survived                7       47
+Accuracy : 0.8715          
+95% CI : (0.8135, 0.9168)
+No Information Rate : 0.648           
+P-Value [Acc &amp;gt; NIR] : 1.189e-11
+Kappa : 0.7088
+Mcnemar&#39;s Test P-Value : 0.09529         
+                                          
+            Sensitivity : 0.7460          
+            Specificity : 0.9397          
+         Pos Pred Value : 0.8704          
+         Neg Pred Value : 0.8720          
+             Prevalence : 0.3520          
+         Detection Rate : 0.2626          
+   Detection Prevalence : 0.3017          
+      Balanced Accuracy : 0.8428          
+                                          
+       &#39;Positive&#39; Class : Survived
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;What comes first to my mind is that our first model is especially great in predicting people that died (as seen by the specificity metric). To make a statement about how great our first attempt is, we must assess the balance (in our case imbalance) of the target variable. How many people have survived? How many people died? Quick calculations:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-There&#34;&gt;P(prediction=0) = P(class=0) = 0.648
+P(prediction=1) = P(class=1) = 0.352
+acc = P(class=0) * P(prediction=0) + P(class=1) * P(prediction=1)
+    = (0.648 * 0.648) + (0.352 * 0.352)
+    = 0.5438
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So what we can say is that our model performed 32.77 percentage points (0.8715–0.5438) better than a “weighted guess” (thanks to this post for refreshing my knowledge). But as I said, this is only the result of the validation set which we used to optimize our model. So let’s test our default model by submitting it to Kaggle.&lt;/p&gt;
+&lt;p&gt;After uploading the predictions of the test set to Kaggle, we get our first result. We reached an accuracy of 76.07%. So we lost around 11% compared to the validation accuracy…DAMN.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;But maybe there is light at the end of the tunnel?! What if hyperparameter-tuning is the solution?!&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;hyperparameter-tuning-of-an-xgboost-model&#34;&gt;Hyperparameter-Tuning of an XGBoost Model&lt;/h2&gt;
+&lt;p&gt;There are different approaches to select hyperparameters. Due to this high degree of choice, many users choose the values of hyperparameters based on reputation, intuitive appeal, or adhere to the default parameter values. This may result in a model whose potential has not been fully utilized [2]. Okay, what have we learned? A structured hyperparameter-tuning process can increase the potential of our model!&lt;/p&gt;
+&lt;p&gt;What I certainly did was to look at these great posts to get a feeling of how I could do it: here and here.&lt;/p&gt;
+&lt;p&gt;Some authors used an iterative manual search approach. They selected hyperparameter-values, ran the model, looked at the output, found some logic, and repeated the whole process. Some first optimized the learning rate, other the number of tree leaves, etc. For me, I could not find one clear routine and it is definitely a time-consuming process. Also, it does not seem to follow the definition of tuning since this process is not really systematic and automated.&lt;/p&gt;
+&lt;p&gt;Way more advanced, I found hyperparameter-tuning procedures in the mlr and caret packages that make use of grid and random search procedures. But what are grid and random search? The grid method runs all possible combinations of predefined values for hyperparameters. The higher the number of discrete values for hyperparameters and the more hyperparameters, the more computationally expensive this method. To be specific, grid search creates an exponentially increasing number of models the more values and the more hyperparameters are used. Thus, it gets difficult to handle quite quickly. With random search, one only defines the search space and sets the number of models that have to be created.&lt;/p&gt;
+&lt;p&gt;So I had a look into the literature and found a great paper from Bergstra et al. (2012). Their research shows that the random search approach has a higher efficiency compared to grid trials and manual search when granting the same computation time. Also, contradictory to the manual search of hyperparameters, the results acquired through random search are reproducible [3]. NICE!&lt;/p&gt;
+&lt;p&gt;Actually, I build a random search algorithm with the mlr package, but I faced severe problems. Due to the complex structure of this algorithm, the process had long running times and I could only test around 150 models per hour. Definitely too slow for an algorithm that takes less around 1 second to execute. Sure, k-fold cross-validation sounds really cool and provides more reliable results, but I just was not patient enough. Luckily, we have out-of-bag observations as provided in the test set through which we can evaluate the model performance of the trained algorithm. Also, testing my results became an issue. I could just not say with certainty that I created the algorithm with the right settings. This was due to the fact that I could not compare the results of the algorithm and a simple XGBoost model with the same hyperparameter-values because of k-fold cross-Validation.&lt;/p&gt;
+&lt;p&gt;So what did I do? In the end, I just created 10,000 random hyperparameter-value sets within a given search space with a for-loop. Then I executed the XGBoost algorithm 10,000 times with the predefined hyperparameter value sets. Of course, I saved the hyperparameter values and the corresponding validation accuracy as a csv-file. Specifying a seed before the random creation of the hyperparameters and the search algorithm ensured that the results are reproducible.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/9ae001ec6d13c2a0e736f617a7fc21d0.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;To evaluate my approach, I asked myself the following questions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Do I understand my procedure? Yes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Can I explain this approach to my professor or my fellow Kaggle competitors? Yes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;How long did it take to compare 10,000 XGBoost models with differing hyperparameter values? 29.7 minutes with a standard consumer laptop. Is this fast? Yes. Could I increase the speed with parallel computing if I wanted? Yes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Can I state that I have found the best model? No. Although a high number of models are created, it is clear that the described approach has not found the very best model performance. To obtain better results, one could alter the search space or even include more hyperparameters. Still, finding the perfect model could not be stated after additional random searches with changed settings.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Does that procedure lead to the most stable model there is? Most likely not. As I said, using other methods (k-fold cross-validation, stratification, etc.) could lead to a more stable model.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So in the end, I decided on a procedure that is both fast and easy.&lt;/p&gt;
+&lt;p&gt;Let’s have a look at the random search table.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/6553616b4edf0a6a950641b99afd1d95.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/dc6037f17d3c22d15845f57b2b3436cc.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;Values are rounded. If only copied like this into the model, you will obtain different results.&lt;/p&gt;
+&lt;p&gt;Indeed, hyperparameter tuning has a strong effect on the performance of the model. The validation accuracy ranges between 80.4 percent and 89.4 percent, with a median of 86.6 percent and a mean of 86.7 percent. Remember, the validation accuracy that we got from an XGBoost model with default values was 87.2 percent…&lt;/p&gt;
+&lt;p&gt;To see more details, we plug the hyperparameters of the best hyperparameter value set into our XGBoost algorithm and again have a look at the model’s statistics and the confusion matrix.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/25126e95491332b31b71fc9aeb64862a.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Actual&#34;&gt;Prediction     Not Survived Survived
+Not Survived          110       13
+Survived                6       50
+Accuracy : 0.8939          
+95% CI : (0.8392, 0.9349)
+No Information Rate : 0.648           
+P-Value [Acc &amp;gt; NIR] : 4.303e-14
+Kappa : 0.7612
+Mcnemar&#39;s Test P-Value : 0.1687          
+                                          
+            Sensitivity : 0.7937          
+            Specificity : 0.9483          
+         Pos Pred Value : 0.8929          
+         Neg Pred Value : 0.8943          
+             Prevalence : 0.3520          
+         Detection Rate : 0.2793          
+   Detection Prevalence : 0.3128          
+      Balanced Accuracy : 0.8710          
+                                          
+       &#39;Positive&#39; Class : Survived
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Most significant improvement: sensitivity has increased by 4.77 percentage points. Having better validation results is great, but in the end, only our test accuracy score is essential. Now, the final moment has come…&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/9be2d602fcb4877e75cc9205a343c0c4.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;We get an accuracy of 77.99%. This is better than the accuracy of our base model. But how have we done against other Kaggler’s? Hmmm…it doesn’t look too good for our model, as we can see in the below plot. We are only under the top 37%. That’s why we come to the final learning of my blog post. Hyperparameter-tuning is the last part of the model creation process. Since I got too excited about my search algorithm, I did not put enough time in feature engineering my model. Without useful features that the model can learn from, I can do all the hyperparameter-tuning I want. It will still be just mediocre. Therefore, when time is limited, one should focus on feature engineering and not on hyperparameter-tuning.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;./Score.png&#34; alt=&#34;&#34;/&gt;
+  &lt;figcaption&gt;Histogram of the public leaderboard scores. The models that have had better accuracy than our model are displayed in black, the others are displayed in grey. We would have gotten an accuracy of 0.627 if we had predicted that everyone died. An accuracy of 0.766 would have been achieved if we had predicted that all males over the age of three died and that the women and children survived. Plot created by author.&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;Were all the efforts for nothing? Of course not. If you have enough time, you can create great features and use a hyperparameter-tuning process (in the end!) that helps you to extract the very last accuracy percentage points out of your model.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;What I have introduced here is a procedure that I used to tune the model that I created for a seminar paper. Although plenty of information can be found via Google, I struggled to find a suitable solution for my needs. What I wanted, in the end, was something that I could correctly understand and which did not require endless hours to compute. Also, I wanted an automated approach whose results I could replicate at any point in time. These criteria are definitely fulfilled by my simple random search algorithm.&lt;/p&gt;
+&lt;p&gt;I don’t claim that this procedure leads to the best or the most stable model. If you had the pleasure to stumble upon a better solution, have any questions or comments, feel free to reach me via the contact field or 
+&lt;a href=&#34;https://linkedin.com/in/jonathan-ratschat&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LinkedIn&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;p&gt;[1] Chen, T. &amp;amp; Guestrin, C. (2016), Xgboost: A scalable tree boosting system, in B. Krishnapuram &amp;amp; M. Shah, eds, ‘KDD ’16: Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining’, pp. 785–794.&lt;/p&gt;
+&lt;p&gt;[2] Thornton, C., Hutter, F., Hoos, H. H. &amp;amp; Leyton-Brown, K. (2013), Autoweka: Combined selection and hyperparameter optimization of classification algorithms, in R. Ghani, T. E. Senator, P. Bradley, R. Parekh &amp;amp; J. He, eds, ‘KDD ’13: Proceedings of the 19th ACM SIGKDD international conference on Knowledge discovery and data mining’, pp. 847–855.&lt;/p&gt;
+&lt;p&gt;[3] Bergstra, J. &amp;amp; Bengio, Y. (2012), ‘Random search for hyper-parameter optimization’, Journal of Machine Learning Research 12, 281–305.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Boosting Gradient Boosting Interpretability</title>
+      <link>/project/boosting-gradient-boosting-interpretability/</link>
+      <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/project/boosting-gradient-boosting-interpretability/</guid>
+      <description>&lt;h2 id=&#34;about-the-paper&#34;&gt;About the paper&lt;/h2&gt;
+&lt;p&gt;This research paper was written in summer 2020 within the Master&amp;rsquo;s seminar &lt;em&gt;Data Mining in Marketing: Data Driven Customer Analytics with Machine Learning&lt;/em&gt;. In partial fulfillment of the requirements of the seminar, I predicted and interpreted cross-selling purchase probabilities using XGBoost and SHAP values in R. Read the full paper here: 
+&lt;a href=&#34;&#34;&gt;Boosting Gradient Boosting Interpretability: Predicting and Interpreting Cross-Selling Purchase Probabilities of a Large German Savings Bank&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;introduction-and-findings&#34;&gt;Introduction and Findings&lt;/h2&gt;
+&lt;p&gt;In this paper, a dataset from a large German savings bank is used to predict crossselling purchase probabilities and decisions in the customer base. The goals of this paper are (1) to accurately predict whether an already existing customer will open a checking account and (2) to explore which effect the features have on the prediction to enhance the interpretability of the model. To reach these goals, the paper leverages one of the leading gradient boosting algorithms there is, namely XGBoost. It has been used with great success on many machine learning and data mining challenges. Among the advantages of XGBoost are that its models are easily scalable, tend to avoid overfitting, and can be used for a wide range of problems (Chen &amp;amp; Guestrin 2016, p. 785-786). To tackle the lack of easy interpretability of boosted trees (Friedman 2001, p. 1229–1230), this paper implements SHapley Additive exPlanations (SHAP) values to explain the output of the XGBoost model.&lt;/p&gt;
+&lt;p&gt;When accuracy is the main goals, then one should use more complex models. Although tuning an XGBoost model is computationally expensive, once it is tuned, it becomes computationally cheap. It becomes apparent that such prediction systems have their place in marketing analytics departments. Instead of only predicting the likelihood of buying a checking account, marketing departments could extend this approach to any product offering to compare purchasing probabilities and target customers with the products for which they have the highest probability to buy. Through this strategy, it could become feasible to target the right customers and to ultimately increase profitability. For this concept to be successful, several additional topics need to be addressed. One has to assess which customers have the potential to be profitable while excluding customers that lead to losses (Shah et al. 2012). Also, one must answer the question when and where a customer should be targeted.&lt;/p&gt;
+&lt;p&gt;Generally, SHAP values enable its users to critically examine complex models and to understand how dependent variables were predicted. Through this method, users gain further knowledge about importance, extent and direction of feature variables on the target variable. Although causal statements cannot be made through this approach, it still helps users to gain trust in the model, to find ways of improving the model, and to get a new understanding of the data. Therefore, this enhanced interpretability should increase user adoption. When only using tools from the xgboost package, this would not be feasible to such an extent. The trust of the analysis through SHAP values is increased because suggested underlying trends of the data have been amongst others discovered by RFM-models (Bauer 1988, Miglautsch 2000). Customers that have recently acquired another product have an higher prediction value than customers that have not bought another product for a longer period of time. Also, the more active customers are (as measured by logins), the higher is the prediction that these customers cross-buy a checking account. Other important trends found in the data are that younger customers exhibit an higher prediction probability than older customers and that checking account ads always lead to a positive effect on the prediction, although with varying extent. This paper shows that giro_mailing does lead to a negative interaction effect on the prediction when appearing with younger or recent customers. This could indicate that the model finds autoresponse within the group of younger or recent customers and punishes this effect with a negative interaction value.&lt;/p&gt;
+&lt;p&gt;XGBoost models should be used in practice for predicting cross-selling purchase probabilities and decisions. One of the biggest disadvantages - lack of interpretability - can be mitigated through the use of SHAP values that greatly expand the transparency, explainability, interpretability of complex tree-based models.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1225 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Jonathan Ratschat">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Hint: Using a Kaggle data set might not be sufficient.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/how-to-collect-data-for-your-analysis/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#141622">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hue704637de344c428b8cd539a0df900cd_414_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hue704637de344c428b8cd539a0df900cd_414_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/post/how-to-collect-data-for-your-analysis/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="">
+  <meta property="og:url" content="/post/how-to-collect-data-for-your-analysis/">
+  <meta property="og:title" content="How to Collect Data for Your Analysis | ">
+  <meta property="og:description" content="Hint: Using a Kaggle data set might not be sufficient."><meta property="og:image" content="/post/how-to-collect-data-for-your-analysis/featured.jpg">
+  <meta property="twitter:image" content="/post/how-to-collect-data-for-your-analysis/featured.jpg"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-06-06T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-06-06T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/how-to-collect-data-for-your-analysis/"
+  },
+  "headline": "How to Collect Data for Your Analysis",
+  
+  "image": [
+    "/post/how-to-collect-data-for-your-analysis/featured.jpg"
+  ],
+  
+  "datePublished": "2020-06-06T00:00:00Z",
+  "dateModified": "2020-06-06T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Jonathan Ratschat"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/images/icon_hue704637de344c428b8cd539a0df900cd_414_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Hint: Using a Kaggle data set might not be sufficient."
+}
+</script>
+
+  
+
+  
+
+
+  
+  
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js" integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css" integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin="anonymous">
+  
+  <script>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#141622",
+          "text": "#fff"
+        },
+        "button": {
+          "background": "#fff",
+          "text": "#141622"
+        }
+      },
+      "theme": "classic",
+      "content": {
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "dismiss": "Got it!",
+        "link": "Learn more",
+        "href": "/privacy/"
+      }
+    })});
+  </script>
+
+
+
+  
+
+
+
+
+
+  <title>How to Collect Data for Your Analysis | </title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/"></a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/"></a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-end" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>HOME</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>BLOG</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>PROJECTS</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>CONTACT</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+            
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="https://linkedin.com/in/jonathan-ratschat" target="_blank" rel="noopener"><span>EXPERIENCE</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>How to Collect Data for Your Analysis</h1>
+
+  
+  <p class="page-subtitle">Hint: Using a Kaggle data set might not be sufficient.</p>
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jun 6, 2020
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    8 min read
+  </span>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/post/how-to-collect-data-for-your-analysis/#disqus_thread"></a>
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 640px; max-height: 426px;">
+  <div style="position: relative">
+    <img src="/post/how-to-collect-data-for-your-analysis/featured.jpg" alt="" class="featured-image">
+    <span class="article-header-caption">Photo by <a href="https://unsplash.com/@nasa">NASA</a> on <a href="https://unsplash.com/photos/CpHNKNRwXps">Unsplash</a></span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p><em>This article was first published on 
+<a href="https://towardsdatascience.com/how-to-collect-data-for-your-analysis-a8bc58043e64" target="_blank" rel="noopener">Medium</a>.</em></p>
+<p>How great would it be when data could be as easily accessed as on Kaggle?</p>
+<p>Data collection? Just visit Kaggle, find a suitable data set, and download it. How about analyzing the Titanic incident from 1912? Or how about image recognition of flowers? No? Maybe you want to predict credit card fraud detection? Guess what, Kaggle has you covered.</p>
+<p>When you have decided on your data set of interest, the fun can finally start. Taking 5 minutes to find a suitable data set was already stressful enough, right? The most elaborate machine algorithms are waiting for you. So ultimately, who cares about the data?</p>
+<p>Sadly, the real world is different. Having the right data and data quality are key to making causal statements or to constructing machine learning algorithms that can really have an impact. Without relevant data, your analyses would be fun, but irrelevant.</p>
+<p>Obviously, you cannot always find perfectly preprocessed data that fulfill your needs. Also, you need to understand where the data has come from and how it was built. Ultimately, we need to keep in mind what Kaggle is.</p>
+<blockquote>
+<p>It is most famous for being a place in which one can enter competitions to solve data science challenges.</p>
+</blockquote>
+<p>So if you want to make a name for yourself as a serious predictive modeler, you have found the perfect website to show off your skills. If you’re going to gather data to write a research paper or to build something that works in the real world, Kaggle could be the wrong source for your data.</p>
+<p>In my experience, data collection and preparation can take days to complete. What I have done so far is to build data sets from scratch and access data sets from government institutions. Both have their limitations.</p>
+<p>What I want to show you is a practical introduction to how you could create relevant data sets that support you in your research/machine learning goals.
+Let’s get started.</p>
+<p>First, you have to assess the following two questions to conduct your analysis.</p>
+<ul>
+<li>What kind of data do you need?</li>
+<li>How can you access it?</li>
+</ul>
+<p>Answering these questions is critical but not always straightforward. Of course, a Google search could lead to results, but asking peers for advice could also be helpful. Spend some time with these questions until you’re sure that you have found the right answer.</p>
+<h2 id="1-building-a-data-set-from-scratch">1. Building a data set from scratch</h2>
+<p>In one of my projects, I needed to access financial data from German companies to analyze the effect of a new mandatory accounting standard on bid-ask spreads.</p>
+<p>Luckily, my professor supplied us with a Thomson Reuters account, and I could use Datastream to access the financial data of these companies. You would think that simply using this database would be sufficient and that I could finally do the real work.</p>
+<p>False! When gathering the data for these companies, I ended up with 8 different excel sheets that I had to somehow merge into one data frame.</p>
+<p>Datastream provided me with some static company information that would end up as my main sheet.</p>
+<script src="https://gist.github.com/JRatschat/76a060e7e11a14059ea4b74ffe709c14.js"></script>
+<p>The other excel sheets that I got had the following format because I was accessing time-series data for each company.</p>
+<script src="https://gist.github.com/JRatschat/5192b85df1cd7723597f1a978abbf8bf.js"></script>
+<p>So how can I get such data into a meaningful format so that I can use it along with the other company information?</p>
+<p>Let’s perform one of my calculations so that you get the idea. I had two sheets — one for bid prices and one for ask prices. What I needed was the average relative bid-ask spread.</p>
+<p>First, I loaded the data and controlled for missing values. I spotted one row that was completely missing and deleted it for both data sets.</p>
+<script src="https://gist.github.com/JRatschat/2370fb9bb52695789bc00109990a5f2c.js"></script>
+<p>Then I calculated the bid-ask spread by subtracting the bid price from the ask price.</p>
+<script src="https://gist.github.com/JRatschat/c0fcd949a42ec26f878820dbfdc12dd2.js"></script>
+<pre><code class="language-&gt;">'data.frame': 152 obs. of  50 variables:
+$ D.AB1 : num  0.034 0.069 0.038 ...
+$ D.AOX : num  0.38 0.36 0.38 ...
+$ D.AAD : num  0.38 0.4 0.36 ...
+$ D.CAG : num  0.04 0.1 0.04 ...
+$ D.B5A : num  0.36 0.395 0.395 ...
+$ D.BDT : num  0.37 0.75 1 ...
+$ D.BIO3: num  0.84 0.82 0.82 ...
+$ D.O2C : num  0.151 0.15 0.15 ...
+$ D.CEV : num  0.305 0.295 0.2 ...
+$ D.CWC : num  0.535 1.175 1.335 ...
+</code></pre>
+<p>Then I had to calculate the relative bid-ask spread. Therefore, I had to import the daily stock prices, deleted the 149th row, and calculated the bid-ask spreads relative to the price.</p>
+<script src="https://gist.github.com/JRatschat/a315f1a9f4d23e484b8b22a3a63005a3.js"></script>
+<p>Finally, I calculated the mean of the relative bid-ask spreads and merged it into the static data frame.</p>
+<script src="https://gist.github.com/JRatschat/077571824c7fc5ccbeba86985aaab480.js"></script>
+<pre><code class="language-&gt;">'data.frame': 50 obs. of  6 variables:
+$ MNEM                 : chr  &quot;D.2HRA&quot; &quot;D.AAD&quot; &quot;D.AB1&quot; ...
+$ NAME                 : chr  &quot;H &amp; R&quot; &quot;AMADEUS FIRE&quot; ...
+$ WC05350              : POSIXct, format: &quot;2011-12-31&quot; ...
+$ MV                   : num  644 150 331 638 622 ...
+$ NOSHFF               : num  44 74 63 44 52 45 100 ...
+$ mean_relative_bid_ask: num  0.0138 0.0139 0.0163 ...
+</code></pre>
+<p>This is only the code for one additional variable! Imagine doing that for 20 or even 30 other variables that you cannot get out-of-the-box from Datastream. This takes way longer than 5 minutes.</p>
+<p>There are many other feasible methods of how you can create your own data set from scratch. You could, for example, conduct a good old survey or scrape tweets from Twitter. Ultimately, it depends on what kind of data you need.</p>
+<p>Okay, it’s time for a quick assessment.</p>
+<p>Advantages:</p>
+<ul>
+<li>Features are included based on the purpose of the research question or task. Not vice versa. This helps to only use meaningful data.</li>
+<li>It is traceable how the variables were created.</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>It can be challenging to find suitable sources.</li>
+<li>It takes a lot of time to gather the data.</li>
+<li>Transforming features into the right format can be a lot of effort.</li>
+<li>Access to databases like Thomson Reuters is often restricted. If your university or employer does not have a license, this kind of information can get very costly.</li>
+</ul>
+<h2 id="2-using-a-data-set-from-a-governmental-institution">2. Using a data set from a governmental institution</h2>
+<p>One could think that accessing data from governmental institutions is as easy as obtaining data from Kaggle. Wrong! Often, you have to put in a lot of time to understand the data.</p>
+<p>So for another project, I wanted to research the effect of financial literacy on stock market participation. For assessing this research question, I found quite a lot of research papers that made use of the Survey of Consumer Finances to analyze stock market participation. Therefore, I accessed the newest version (2016) of this cross-sectional survey of US families.</p>
+<blockquote>
+<p>Little did I know how difficult understanding and working with this data set would be.</p>
+</blockquote>
+<p>So the SEC has published all relevant data here. I spend a substantial time finding the right data set. First, I tried out the R-implementation, but in the end, I found it too difficult to use. Then, I accidentally downloaded the summary extract and wondered why the data was so different than described in the codebook. After a long journey of losing my mind, I found the complete data that I would be using for my analyses.</p>
+<p>When looking at the data, I found that all variables were encoded. I had to use this codebook to make sense of the data. For every single variable…</p>
+<script src="https://gist.github.com/JRatschat/611f83af96c0a0cddfa3d30eb3176669.js"></script>
+<p>The codebook is really really long. Even the SEC notes on the first lines of the codebook the crazy size of this document. It contains about 45,000 lines of text. They recommend to not print the entire document. Great advice…</p>
+<figure>
+  <img src="./SEC.png" alt=""/>
+  <figcaption>First lines of the SCF’s Codebook.
+</figcaption>
+</figure>
+<p>I spend many hours finding the questions that I could use to create meaningful variables. Ever used the search tool in Chrome? I probably used it 10,000 times for finding the right variables.</p>
+<p>Luckily, the summary extract that I first downloaded proofed to be helpful. Instead of calculating the numerous financial information of the households in R, I just merged this data set to the complete survey data set. Funny story: The calculations are specified in a SAS script. I attempted to translate it into R. After wasting two hours, I remembered the summary extract…</p>
+<p>Finally, I had a data set that I could start to analyze. But of course, I had many more problems with it. Have you ever heard of weighting and multiple imputations? These topics are difficult and painful, at least for me. But this is another story to tell.</p>
+<p>Of course, the SCF is only one of the numerous available governmental data sets. And besides governmental data, there are also data sets from organizations like the 
+<a href="https://data.worldbank.org/" target="_blank" rel="noopener">World Bank</a>, 
+<a href="https://www.who.int/gho/database/en/" target="_blank" rel="noopener">WHO</a>, or 
+<a href="https://www.iatiregistry.org/publisher/unicef" target="_blank" rel="noopener">Unicef</a>. Some might be much easier to handle.</p>
+<p>Again, a quick assessment.</p>
+<p>Advantages:</p>
+<ul>
+<li>Commonly high data quality. Especially if the data has been used by other researchers or practitioners.</li>
+<li>Often data is well documented. Therefore, one can understand how the variables were created.</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>It can take a lot of time to gather and transform features (think about the 45,000 lines of text).</li>
+<li>It can be hard to understand the data sets.</li>
+<li>Access is sometimes only given on a request basis.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>So what have we learned? Accessing data can be quite a hassle and takes time. Loading data and being ready to rumble? No, this is unrealistic.</p>
+<p>But what collecting data the old way (not on Kaggle) ultimately does is that we must ask ourselves the right questions. We have to think before we have the data. Why? Because collecting data is a lot of effort. This means that we hopefully collect and use meaningful data for our analyses.</p>
+<blockquote>
+<p>Keep in mind that an analysis can only be as good as the quality of the data.</p>
+</blockquote>
+<p>If you have any questions or comments, feel free to reach me via the contact field or 
+<a href="https://linkedin.com/in/jonathan-ratschat" target="_blank" rel="noopener">LinkedIn</a>.</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/data-science/">Data Science</a>
+  
+  <a class="badge badge-light" href="/tag/research/">Research</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/how-to-collect-data-for-your-analysis/&amp;text=How%20to%20Collect%20Data%20for%20Your%20Analysis" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/how-to-collect-data-for-your-analysis/&amp;t=How%20to%20Collect%20Data%20for%20Your%20Analysis" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=How%20to%20Collect%20Data%20for%20Your%20Analysis&amp;body=/post/how-to-collect-data-for-your-analysis/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/how-to-collect-data-for-your-analysis/&amp;title=How%20to%20Collect%20Data%20for%20Your%20Analysis" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=How%20to%20Collect%20Data%20for%20Your%20Analysis%20/post/how-to-collect-data-for-your-analysis/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/how-to-collect-data-for-your-analysis/&amp;title=How%20to%20Collect%20Data%20for%20Your%20Analysis" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+    
+    
+    
+      
+    
+    
+    
+    <div class="media author-card content-widget-hr">
+      
+        
+        <img class="avatar mr-3 avatar-circle" src="/author/jonathan-ratschat/avatar_hua285502f8d9718720fc5e4b94a01ba53_1265544_270x270_fill_q90_lanczos_center.JPG" alt="Jonathan Ratschat">
+      
+
+      <div class="media-body">
+        <h5 class="card-title"><a href="/">Jonathan Ratschat</a></h5>
+        <h6 class="card-subtitle">Masters&rsquo; student</h6>
+        <p class="card-text">Experience-driven. Sharing my lessons learned. Passionate about data. Preparing students for the digital future through TechAcademy.</p>
+        <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://linkedin.com/in/jonathan-ratschat" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/jratschat" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://medium.com/@j.ratschat" target="_blank" rel="noopener">
+        <i class="fab fa-medium"></i>
+      </a>
+    </li>
+  
+</ul>
+
+      </div>
+    </div>
+  
+
+
+
+
+
+
+
+<section id="comments">
+  
+    
+<div id="disqus_thread"></div>
+<script>
+  let disqus_config = function () {
+    
+    
+    
+  };
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+      return;
+    }
+    var d = document, s = d.createElement('script'); s.async = true;
+    s.src = 'https://' + "Ephorus" + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  
+</section>
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/project/boosting-gradient-boosting-interpretability/">Boosting Gradient Boosting Interpretability</a></li>
+      
+      <li><a href="/post/getting-to-a-hyperparameter-tuned-xgboost-model-in-no-time/">Getting to a Hyperparameter-Tuned XGBoost Model in No Time</a></li>
+      
+      <li><a href="/project/financial-literacy/">Financial Literacy and Stock Market Participation</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    <script id="dsq-count-scr" src="https://Ephorus.disqus.com/count.js" async></script>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Datenschutz</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Impressum</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

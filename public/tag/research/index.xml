@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Research | </title>
+    <link>/tag/research/</link>
+      <atom:link href="/tag/research/index.xml" rel="self" type="application/rss+xml" />
+    <description>Research</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 06 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon.png</url>
+      <title>Research</title>
+      <link>/tag/research/</link>
+    </image>
+    
+    <item>
+      <title>How to Collect Data for Your Analysis</title>
+      <link>/post/how-to-collect-data-for-your-analysis/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/post/how-to-collect-data-for-your-analysis/</guid>
+      <description>&lt;p&gt;&lt;em&gt;This article was first published on 
+&lt;a href=&#34;https://towardsdatascience.com/how-to-collect-data-for-your-analysis-a8bc58043e64&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Medium&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;How great would it be when data could be as easily accessed as on Kaggle?&lt;/p&gt;
+&lt;p&gt;Data collection? Just visit Kaggle, find a suitable data set, and download it. How about analyzing the Titanic incident from 1912? Or how about image recognition of flowers? No? Maybe you want to predict credit card fraud detection? Guess what, Kaggle has you covered.&lt;/p&gt;
+&lt;p&gt;When you have decided on your data set of interest, the fun can finally start. Taking 5 minutes to find a suitable data set was already stressful enough, right? The most elaborate machine algorithms are waiting for you. So ultimately, who cares about the data?&lt;/p&gt;
+&lt;p&gt;Sadly, the real world is different. Having the right data and data quality are key to making causal statements or to constructing machine learning algorithms that can really have an impact. Without relevant data, your analyses would be fun, but irrelevant.&lt;/p&gt;
+&lt;p&gt;Obviously, you cannot always find perfectly preprocessed data that fulfill your needs. Also, you need to understand where the data has come from and how it was built. Ultimately, we need to keep in mind what Kaggle is.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It is most famous for being a place in which one can enter competitions to solve data science challenges.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So if you want to make a name for yourself as a serious predictive modeler, you have found the perfect website to show off your skills. If you’re going to gather data to write a research paper or to build something that works in the real world, Kaggle could be the wrong source for your data.&lt;/p&gt;
+&lt;p&gt;In my experience, data collection and preparation can take days to complete. What I have done so far is to build data sets from scratch and access data sets from government institutions. Both have their limitations.&lt;/p&gt;
+&lt;p&gt;What I want to show you is a practical introduction to how you could create relevant data sets that support you in your research/machine learning goals.
+Let’s get started.&lt;/p&gt;
+&lt;p&gt;First, you have to assess the following two questions to conduct your analysis.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;What kind of data do you need?&lt;/li&gt;
+&lt;li&gt;How can you access it?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Answering these questions is critical but not always straightforward. Of course, a Google search could lead to results, but asking peers for advice could also be helpful. Spend some time with these questions until you’re sure that you have found the right answer.&lt;/p&gt;
+&lt;h2 id=&#34;1-building-a-data-set-from-scratch&#34;&gt;1. Building a data set from scratch&lt;/h2&gt;
+&lt;p&gt;In one of my projects, I needed to access financial data from German companies to analyze the effect of a new mandatory accounting standard on bid-ask spreads.&lt;/p&gt;
+&lt;p&gt;Luckily, my professor supplied us with a Thomson Reuters account, and I could use Datastream to access the financial data of these companies. You would think that simply using this database would be sufficient and that I could finally do the real work.&lt;/p&gt;
+&lt;p&gt;False! When gathering the data for these companies, I ended up with 8 different excel sheets that I had to somehow merge into one data frame.&lt;/p&gt;
+&lt;p&gt;Datastream provided me with some static company information that would end up as my main sheet.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/76a060e7e11a14059ea4b74ffe709c14.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;The other excel sheets that I got had the following format because I was accessing time-series data for each company.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/5192b85df1cd7723597f1a978abbf8bf.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;So how can I get such data into a meaningful format so that I can use it along with the other company information?&lt;/p&gt;
+&lt;p&gt;Let’s perform one of my calculations so that you get the idea. I had two sheets — one for bid prices and one for ask prices. What I needed was the average relative bid-ask spread.&lt;/p&gt;
+&lt;p&gt;First, I loaded the data and controlled for missing values. I spotted one row that was completely missing and deleted it for both data sets.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/2370fb9bb52695789bc00109990a5f2c.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;Then I calculated the bid-ask spread by subtracting the bid price from the ask price.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/c0fcd949a42ec26f878820dbfdc12dd2.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code class=&#34;language-&amp;gt;&#34;&gt;&#39;data.frame&#39;: 152 obs. of  50 variables:
+$ D.AB1 : num  0.034 0.069 0.038 ...
+$ D.AOX : num  0.38 0.36 0.38 ...
+$ D.AAD : num  0.38 0.4 0.36 ...
+$ D.CAG : num  0.04 0.1 0.04 ...
+$ D.B5A : num  0.36 0.395 0.395 ...
+$ D.BDT : num  0.37 0.75 1 ...
+$ D.BIO3: num  0.84 0.82 0.82 ...
+$ D.O2C : num  0.151 0.15 0.15 ...
+$ D.CEV : num  0.305 0.295 0.2 ...
+$ D.CWC : num  0.535 1.175 1.335 ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then I had to calculate the relative bid-ask spread. Therefore, I had to import the daily stock prices, deleted the 149th row, and calculated the bid-ask spreads relative to the price.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/a315f1a9f4d23e484b8b22a3a63005a3.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;Finally, I calculated the mean of the relative bid-ask spreads and merged it into the static data frame.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/077571824c7fc5ccbeba86985aaab480.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code class=&#34;language-&amp;gt;&#34;&gt;&#39;data.frame&#39;: 50 obs. of  6 variables:
+$ MNEM                 : chr  &amp;quot;D.2HRA&amp;quot; &amp;quot;D.AAD&amp;quot; &amp;quot;D.AB1&amp;quot; ...
+$ NAME                 : chr  &amp;quot;H &amp;amp; R&amp;quot; &amp;quot;AMADEUS FIRE&amp;quot; ...
+$ WC05350              : POSIXct, format: &amp;quot;2011-12-31&amp;quot; ...
+$ MV                   : num  644 150 331 638 622 ...
+$ NOSHFF               : num  44 74 63 44 52 45 100 ...
+$ mean_relative_bid_ask: num  0.0138 0.0139 0.0163 ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is only the code for one additional variable! Imagine doing that for 20 or even 30 other variables that you cannot get out-of-the-box from Datastream. This takes way longer than 5 minutes.&lt;/p&gt;
+&lt;p&gt;There are many other feasible methods of how you can create your own data set from scratch. You could, for example, conduct a good old survey or scrape tweets from Twitter. Ultimately, it depends on what kind of data you need.&lt;/p&gt;
+&lt;p&gt;Okay, it’s time for a quick assessment.&lt;/p&gt;
+&lt;p&gt;Advantages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Features are included based on the purpose of the research question or task. Not vice versa. This helps to only use meaningful data.&lt;/li&gt;
+&lt;li&gt;It is traceable how the variables were created.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Disadvantages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It can be challenging to find suitable sources.&lt;/li&gt;
+&lt;li&gt;It takes a lot of time to gather the data.&lt;/li&gt;
+&lt;li&gt;Transforming features into the right format can be a lot of effort.&lt;/li&gt;
+&lt;li&gt;Access to databases like Thomson Reuters is often restricted. If your university or employer does not have a license, this kind of information can get very costly.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-using-a-data-set-from-a-governmental-institution&#34;&gt;2. Using a data set from a governmental institution&lt;/h2&gt;
+&lt;p&gt;One could think that accessing data from governmental institutions is as easy as obtaining data from Kaggle. Wrong! Often, you have to put in a lot of time to understand the data.&lt;/p&gt;
+&lt;p&gt;So for another project, I wanted to research the effect of financial literacy on stock market participation. For assessing this research question, I found quite a lot of research papers that made use of the Survey of Consumer Finances to analyze stock market participation. Therefore, I accessed the newest version (2016) of this cross-sectional survey of US families.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Little did I know how difficult understanding and working with this data set would be.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So the SEC has published all relevant data here. I spend a substantial time finding the right data set. First, I tried out the R-implementation, but in the end, I found it too difficult to use. Then, I accidentally downloaded the summary extract and wondered why the data was so different than described in the codebook. After a long journey of losing my mind, I found the complete data that I would be using for my analyses.&lt;/p&gt;
+&lt;p&gt;When looking at the data, I found that all variables were encoded. I had to use this codebook to make sense of the data. For every single variable…&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/611f83af96c0a0cddfa3d30eb3176669.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;The codebook is really really long. Even the SEC notes on the first lines of the codebook the crazy size of this document. It contains about 45,000 lines of text. They recommend to not print the entire document. Great advice…&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;./SEC.png&#34; alt=&#34;&#34;/&gt;
+  &lt;figcaption&gt;First lines of the SCF’s Codebook.
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;I spend many hours finding the questions that I could use to create meaningful variables. Ever used the search tool in Chrome? I probably used it 10,000 times for finding the right variables.&lt;/p&gt;
+&lt;p&gt;Luckily, the summary extract that I first downloaded proofed to be helpful. Instead of calculating the numerous financial information of the households in R, I just merged this data set to the complete survey data set. Funny story: The calculations are specified in a SAS script. I attempted to translate it into R. After wasting two hours, I remembered the summary extract…&lt;/p&gt;
+&lt;p&gt;Finally, I had a data set that I could start to analyze. But of course, I had many more problems with it. Have you ever heard of weighting and multiple imputations? These topics are difficult and painful, at least for me. But this is another story to tell.&lt;/p&gt;
+&lt;p&gt;Of course, the SCF is only one of the numerous available governmental data sets. And besides governmental data, there are also data sets from organizations like the 
+&lt;a href=&#34;https://data.worldbank.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;World Bank&lt;/a&gt;, 
+&lt;a href=&#34;https://www.who.int/gho/database/en/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;WHO&lt;/a&gt;, or 
+&lt;a href=&#34;https://www.iatiregistry.org/publisher/unicef&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Unicef&lt;/a&gt;. Some might be much easier to handle.&lt;/p&gt;
+&lt;p&gt;Again, a quick assessment.&lt;/p&gt;
+&lt;p&gt;Advantages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Commonly high data quality. Especially if the data has been used by other researchers or practitioners.&lt;/li&gt;
+&lt;li&gt;Often data is well documented. Therefore, one can understand how the variables were created.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Disadvantages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It can take a lot of time to gather and transform features (think about the 45,000 lines of text).&lt;/li&gt;
+&lt;li&gt;It can be hard to understand the data sets.&lt;/li&gt;
+&lt;li&gt;Access is sometimes only given on a request basis.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;So what have we learned? Accessing data can be quite a hassle and takes time. Loading data and being ready to rumble? No, this is unrealistic.&lt;/p&gt;
+&lt;p&gt;But what collecting data the old way (not on Kaggle) ultimately does is that we must ask ourselves the right questions. We have to think before we have the data. Why? Because collecting data is a lot of effort. This means that we hopefully collect and use meaningful data for our analyses.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Keep in mind that an analysis can only be as good as the quality of the data.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;If you have any questions or comments, feel free to reach me via the contact field or 
+&lt;a href=&#34;https://linkedin.com/in/jonathan-ratschat&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LinkedIn&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Boosting Gradient Boosting Interpretability</title>
+      <link>/project/boosting-gradient-boosting-interpretability/</link>
+      <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/project/boosting-gradient-boosting-interpretability/</guid>
+      <description>&lt;h2 id=&#34;about-the-paper&#34;&gt;About the paper&lt;/h2&gt;
+&lt;p&gt;This research paper was written in summer 2020 within the Master&amp;rsquo;s seminar &lt;em&gt;Data Mining in Marketing: Data Driven Customer Analytics with Machine Learning&lt;/em&gt;. In partial fulfillment of the requirements of the seminar, I predicted and interpreted cross-selling purchase probabilities using XGBoost and SHAP values in R. Read the full paper here: 
+&lt;a href=&#34;&#34;&gt;Boosting Gradient Boosting Interpretability: Predicting and Interpreting Cross-Selling Purchase Probabilities of a Large German Savings Bank&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;introduction-and-findings&#34;&gt;Introduction and Findings&lt;/h2&gt;
+&lt;p&gt;In this paper, a dataset from a large German savings bank is used to predict crossselling purchase probabilities and decisions in the customer base. The goals of this paper are (1) to accurately predict whether an already existing customer will open a checking account and (2) to explore which effect the features have on the prediction to enhance the interpretability of the model. To reach these goals, the paper leverages one of the leading gradient boosting algorithms there is, namely XGBoost. It has been used with great success on many machine learning and data mining challenges. Among the advantages of XGBoost are that its models are easily scalable, tend to avoid overfitting, and can be used for a wide range of problems (Chen &amp;amp; Guestrin 2016, p. 785-786). To tackle the lack of easy interpretability of boosted trees (Friedman 2001, p. 1229–1230), this paper implements SHapley Additive exPlanations (SHAP) values to explain the output of the XGBoost model.&lt;/p&gt;
+&lt;p&gt;When accuracy is the main goals, then one should use more complex models. Although tuning an XGBoost model is computationally expensive, once it is tuned, it becomes computationally cheap. It becomes apparent that such prediction systems have their place in marketing analytics departments. Instead of only predicting the likelihood of buying a checking account, marketing departments could extend this approach to any product offering to compare purchasing probabilities and target customers with the products for which they have the highest probability to buy. Through this strategy, it could become feasible to target the right customers and to ultimately increase profitability. For this concept to be successful, several additional topics need to be addressed. One has to assess which customers have the potential to be profitable while excluding customers that lead to losses (Shah et al. 2012). Also, one must answer the question when and where a customer should be targeted.&lt;/p&gt;
+&lt;p&gt;Generally, SHAP values enable its users to critically examine complex models and to understand how dependent variables were predicted. Through this method, users gain further knowledge about importance, extent and direction of feature variables on the target variable. Although causal statements cannot be made through this approach, it still helps users to gain trust in the model, to find ways of improving the model, and to get a new understanding of the data. Therefore, this enhanced interpretability should increase user adoption. When only using tools from the xgboost package, this would not be feasible to such an extent. The trust of the analysis through SHAP values is increased because suggested underlying trends of the data have been amongst others discovered by RFM-models (Bauer 1988, Miglautsch 2000). Customers that have recently acquired another product have an higher prediction value than customers that have not bought another product for a longer period of time. Also, the more active customers are (as measured by logins), the higher is the prediction that these customers cross-buy a checking account. Other important trends found in the data are that younger customers exhibit an higher prediction probability than older customers and that checking account ads always lead to a positive effect on the prediction, although with varying extent. This paper shows that giro_mailing does lead to a negative interaction effect on the prediction when appearing with younger or recent customers. This could indicate that the model finds autoresponse within the group of younger or recent customers and punishes this effect with a negative interaction value.&lt;/p&gt;
+&lt;p&gt;XGBoost models should be used in practice for predicting cross-selling purchase probabilities and decisions. One of the biggest disadvantages - lack of interpretability - can be mitigated through the use of SHAP values that greatly expand the transparency, explainability, interpretability of complex tree-based models.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Financial Literacy and Stock Market Participation</title>
+      <link>/project/financial-literacy/</link>
+      <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/project/financial-literacy/</guid>
+      <description>&lt;h2 id=&#34;about-the-paper&#34;&gt;About the paper&lt;/h2&gt;
+&lt;p&gt;This research paper was written in winter 2019/20 within the Master&amp;rsquo;s seminar &lt;em&gt;Big Data in Personal Finance&lt;/em&gt;. In partial fulfillment of the requirements of the lecture, I analyzed the Survey of Consumer Finances 2016 with regards to the effect of financial literacy to stock market participation using R. Read the full paper here: 
+&lt;a href=&#34;https://github.com/JRatschat/Financial-Literacy-and-Stock-Market-Participation/blob/master/bdpf-paper.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Financial Literacy and Stock Market Participation: Evidence From the Survey of Consumer Finances&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;introduction-and-findings&#34;&gt;Introduction and Findings&lt;/h2&gt;
+&lt;p&gt;The stockholding puzzle, pioneered in the research of Haliassos and Bertaut (1995), has gained a lot of attention by researchers. The question is why a large part of the population worldwide does not invest in stocks despite the equity premium and prefers to hold their assets in low-rate liquid assets (Haliassos &amp;amp; Bertaut, 1995, p. 1110). Due to the demographic shift in the population, this question has become more important in the last years. Stocks and their long-term wealth generating potential can help retirees to not be dependent on the struggling social security and pension systems (Christelis, Georgarakos, &amp;amp; Haliassos, 2011, p. 1918).&lt;/p&gt;
+&lt;p&gt;The contribution to the existing literature is that this paper analyzes the Survey of Consumer Finances (SCF) 2016 with regards to the effect of financial literacy to stock market participation. A new set of financial literacy questions was included in the SCF 2016 that makes it feasible to get an objective measure of financial literacy. This was not possible in earlier series of the SCF which resulted in financial literacy either not being included in the analysis [see, e.g. (Campell, 2006); (Haliassos &amp;amp; Bertaut, 1995); (Malmendier &amp;amp; Nagel, 2011)] or being included through proxies [see, e.g. (Christelis et al., 2011); (Huston et al., 2012); (Shum &amp;amp; Faig, 2006)]. While controlling for other effects, the measure of financial literacy used in this paper enables a more precise estimation of its effect on stock market participation.&lt;/p&gt;
+&lt;p&gt;In the descriptive analysis, I was able to show that there is a difference of stock market participation conditional on financial literacy. Also, financial literacy proxies used in previous research like education and wealth show structural differences in stock market participation when separated in financial literacy groups. More importantly, the Probit regression analysis confirms the results that financial literacy has indeed a significant effect in the decision to participate in the stock market. Therefore, I show that a lack of financial knowledge is a significant deterrent to stock ownership.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
