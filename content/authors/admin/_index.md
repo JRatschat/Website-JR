@@ -44,4 +44,4 @@ Luckily, I get to work with a lot of data. Applying econometric or machine learn
 
 In my spare time, I am active at TechAcademy. This student initiative prepares students for the digital future in the fields of Data Science and Web Development. My role here is to create partnerships with companies. Lots of work, but it enables me to meet inspiring people. Also, pitching (aka selling) is a skill that is built through experience - not through lectures.
 
-Also, I like to write down my experiences and learnings every now and then. Keeping it to myself would be selfish :stuck_out_tongue_winking_eye: Therefore, I am sharing it here :rocket:
+Also, I like to write down my learnings every now and then. Keeping it to myself would be selfish :stuck_out_tongue_winking_eye: Therefore, I am sharing it here :rocket:
