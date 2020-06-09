@@ -205,6 +205,44 @@
 
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168828209-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-168828209-1', { 'anonymize_ip': true });
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
   
 
 
@@ -240,7 +278,7 @@
   <meta property="og:description" content="Masters&#39; student"><meta property="og:image" content="/author/avatar_hua285502f8d9718720fc5e4b94a01ba53_1265544_270x270_fill_q90_lanczos_center.JPG">
   <meta property="twitter:image" content="/author/avatar_hua285502f8d9718720fc5e4b94a01ba53_1265544_270x270_fill_q90_lanczos_center.JPG"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2019-04-07T00:00:00&#43;00:00">
+    
   
 
   
@@ -249,6 +287,36 @@
 
 
   
+  
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js" integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css" integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin="anonymous">
+  
+  <script>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#141622",
+          "text": "#fff"
+        },
+        "button": {
+          "background": "#fff",
+          "text": "#141622"
+        }
+      },
+      "theme": "classic",
+      "content": {
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "dismiss": "Got it!",
+        "link": "Learn more",
+        "href": "/privacy/"
+      }
+    })});
+  </script>
+
 
 
   
@@ -355,7 +423,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#about"><span>HOME</span></a>
+          <a class="nav-link " href="/#about"><span>Home</span></a>
         </li>
 
         
@@ -384,7 +452,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#posts"><span>BLOG</span></a>
+          <a class="nav-link " href="/#posts"><span>Blog</span></a>
         </li>
 
         
@@ -413,7 +481,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#projects"><span>PROJECTS</span></a>
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
         </li>
 
         
@@ -442,7 +510,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#contact"><span>CONTACT</span></a>
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
         </li>
 
         
@@ -466,7 +534,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="https://linkedin.com/in/jonathan-ratschat" target="_blank" rel="noopener"><span>EXPERIENCE</span></a>
+          <a class="nav-link " href="https://linkedin.com/in/jonathan-ratschat" target="_blank" rel="noopener"><span>Experience</span></a>
         </li>
 
         
@@ -620,8 +688,9 @@
     
     
 
-    <p>I am currently pursuing a Master&rsquo;s degree in Business Administration with a focus on Finance at the Goethe University in Frankfurt.</p>
-<p>During my studies, I focus on econometric and machine learning methods in the areas of finance, accounting, marketing and information systems. Also, I am active at TechAcademy e.V., a student initiative which prepares students for the digital future in the fields of Data Science and Web Development.</p>
+    <p>Luckily, I get to work with a lot of data. Applying econometric or machine learning methods are fun. Why? Because I like to code. Also, having exciting results once I have finished a project is satisfying.</p>
+<p>In my spare time, I am active at TechAcademy. This student initiative prepares students for the digital future in the fields of Data Science and Web Development. My role here is to create partnerships with companies. Lots of work, but it enables me to meet inspiring people. Also, pitching (aka selling) is a skill that is built through experience - not through lectures.</p>
+<p>Also, I like to write down my experiences and learnings every now and then. Keeping it to myself would be selfish 😜 Therefore, I am sharing it here 🚀</p>
 
 
     <div class="row">
@@ -635,11 +704,9 @@
           
           <li>Data Science</li>
           
-          <li>Digitalization</li>
+          <li>Business Development</li>
           
           <li>Sales</li>
-          
-          <li>Business Development</li>
           
         </ul>
       </div>
@@ -653,7 +720,7 @@
           <li>
             <i class="fa-li fas fa-graduation-cap"></i>
             <div class="description">
-              <p class="course">MS in Business Administration, 2021</p>
+              <p class="course">MS Business Administration</p>
               <p class="institution">Goethe University Frankfurt</p>
             </div>
           </li>
@@ -661,7 +728,7 @@
           <li>
             <i class="fa-li fas fa-graduation-cap"></i>
             <div class="description">
-              <p class="course">BS International Business Administration, 2018</p>
+              <p class="course">BS International Business Administration</p>
               <p class="institution">Fulda University of Applied Sciences</p>
             </div>
           </li>
@@ -678,29 +745,6 @@
 
     
     
-    
-    <div class="article-widget content-widget-hr">
-      <h3>Latest</h3>
-      <ul>
-        
-        <li>
-          <a href="/publication/preprint/">An example preprint / working paper</a>
-        </li>
-        
-        <li>
-          <a href="/post/jupyter/">Display Jupyter Notebooks with Academic</a>
-        </li>
-        
-        <li>
-          <a href="/publication/journal-article/">An example journal article</a>
-        </li>
-        
-        <li>
-          <a href="/publication/conference-paper/">An example conference paper</a>
-        </li>
-        
-      </ul>
-    </div>
     
   </div>
 </section>
@@ -760,6 +804,8 @@
 
     
     
+    <script id="dsq-count-scr" src="https://https://jratschat-github-io.disqus.com/.disqus.com/count.js" async></script>
+    
 
     
     
@@ -789,17 +835,17 @@
   
   <p class="powered-by">
     
-      <a href="/privacy/">Privacy Policy</a>
+      <a href="/privacy/">Datenschutz</a>
     
     
        &middot; 
-      <a href="/terms/">Terms</a>
+      <a href="/terms/">Impressum</a>
     
   </p>
   
 
   <p class="powered-by">
-    
+    © Jonathan Ratschat 2020
   </p>
 
   

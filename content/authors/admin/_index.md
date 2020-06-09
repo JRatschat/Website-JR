@@ -34,7 +34,7 @@ social:
   icon_pack: fab
   link: https://medium.com/@j.ratschat
 superuser: true
-title: Jonathan Ratschat
+title:
 user_groups:
 - Researchers
 - Visitors
