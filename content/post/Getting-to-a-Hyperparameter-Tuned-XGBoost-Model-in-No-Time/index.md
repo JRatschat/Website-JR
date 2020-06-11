@@ -5,7 +5,7 @@ featured: false
 image:
   caption: "Photo by [Niketh Vellanki](https://unsplash.com/@thenikyv) on [Unsplash](https://unsplash.com/photos/QkSN_8XcXwQ)"
   focal_point: Smart
-#lastmod: "2020-05-22T00:00:00Z"
+lastmod: "2020-05-22T00:00:00Z"
 projects: []
 subtitle: 'How to fine-tune your first XGBoost model in R with random search.'
 summary: How to fine-tune your first XGBoost model in R with random search.

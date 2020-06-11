@@ -5,7 +5,7 @@ featured: false
 image:
   caption: "Photo by [NASA](https://unsplash.com/@nasa) on [Unsplash](https://unsplash.com/photos/CpHNKNRwXps)"
   focal_point: Smart
-#lastmod: "2020-05-22T00:00:00Z"
+lastmod: "2020-06-06T00:00:00Z"
 projects: []
 subtitle: 'Hint: Using a Kaggle data set might not be sufficient.'
 summary: "Hint: Using a Kaggle data set might not be sufficient."

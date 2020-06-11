@@ -13,7 +13,7 @@ image:
   focal_point: ""
   placement: 2
   preview_only: false
-#lastmod: "2020-05-26T00:00:00Z"
+lastmod: "2020-05-26T00:00:00Z"
 projects: []
 subtitle: 'Joining a student initiative proved to be the best decision that I made last year.'
 summary: Joining a student initiative proved to be the best decision that I made last year.

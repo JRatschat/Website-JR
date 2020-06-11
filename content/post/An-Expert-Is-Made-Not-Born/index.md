@@ -5,7 +5,7 @@ featured: false
 image:
   caption: "Photo by [Noah Silliman](https://unsplash.com/@noahsilliman) on [Unsplash](https://unsplash.com/photos/gzhyKEo_cbU)"
   focal_point: Smart
-#lastmod: "2020-05-22T00:00:00Z"
+lastmod: "2020-06-07T00:00:00Z"
 projects: []
 subtitle: 'Asking for advice is easy. It helped me when working harder was not the answer.'
 summary: "Asking for advice is easy. It helped me when working harder was not the answer."
