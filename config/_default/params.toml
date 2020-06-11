@@ -50,6 +50,8 @@ org_name = ""
 # Description for social sharing and search engines. If undefined, superuser role is used in place.
 description = "A data science and personal insights blog and portfolio by Jonathan Ratschat"
 
+sharing_image = "headers/space1.jpg"
+
 ############################
 ## Site Features
 ############################
