@@ -6,12 +6,6 @@
       <atom:link href="/tag/data-science/index.xml" rel="self" type="application/rss+xml" />
     <description>Data Science</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Jonathan Ratschat 2020</copyright><lastBuildDate>Sat, 06 Jun 2020 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>/img/icon.png</url>
-      <title>Data Science</title>
-      <link>/tag/data-science/</link>
-    </image>
-    
     <item>
       <title>How to Collect Data for Your Analysis</title>
       <link>/post/how-to-collect-data-for-your-analysis/</link>

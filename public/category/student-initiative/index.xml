@@ -6,12 +6,6 @@
       <atom:link href="/category/student-initiative/index.xml" rel="self" type="application/rss+xml" />
     <description>Student Initiative</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Jonathan Ratschat 2020</copyright><lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>/img/icon.png</url>
-      <title>Student Initiative</title>
-      <link>/category/student-initiative/</link>
-    </image>
-    
     <item>
       <title>TechAcademy</title>
       <link>/project/techacademy/</link>
