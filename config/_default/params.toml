@@ -228,7 +228,7 @@ plugins_js  = []
 
   # Configuration of Disqus.
   [comments.disqus]
-    shortname = "https://jratschat-github-io.disqus.com/"  # Paste the shortname from your Disqus dashboard.
+    shortname = "Ephorus"  # Paste the shortname from your Disqus dashboard.
     show_count = true  # Show comment count in page header? (true/false)
 
   # Configuration of Commento.
