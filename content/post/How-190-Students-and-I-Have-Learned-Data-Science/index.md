@@ -1,11 +1,11 @@
 ---
-date: "2020-20-21T00:00:00Z"
+date: "2020-06-21T00:00:00Z"
 draft: false
 featured: false
 image:
   caption: "Photo by [Joshua Aragon](https://unsplash.com/@goshua13) on [Unsplash](https://unsplash.com/photos/EaB4Ml7C7fE)"
   focal_point: Smart
-lastmod: "2020-20-21T00:00:00Z"
+lastmod: "2020-06librar-21T00:00:00Z"
 projects: []
 subtitle: 'Actionable strategies on how to learn to code.'
 summary: "Actionable strategies on how to learn to code."
