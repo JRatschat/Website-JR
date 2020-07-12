@@ -205,44 +205,6 @@
 
 
 
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168828209-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-
-  function gtag() {
-      dataLayer.push(arguments);
-  }
-
-  function trackOutboundLink(url, target) {
-    gtag('event', 'click', {
-         'event_category': 'outbound',
-         'event_label': url,
-         'transport_type': 'beacon',
-         'event_callback': function () {
-           if (target !== '_blank') {
-             document.location = url;
-           }
-         }
-    });
-    console.debug("Outbound link clicked: " + url);
-  }
-
-  function onClickCallback(event) {
-    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
-      return;
-    }
-    trackOutboundLink(event.target, event.target.getAttribute('target'));  
-  }
-
-  gtag('js', new Date());
-  gtag('config', 'UA-168828209-1', { 'anonymize_ip': true });
-
-  
-  document.addEventListener('click', onClickCallback, false);
-</script>
-
-
   
 
 
@@ -736,8 +698,8 @@
 <p>What I ask for is a phone call. Most often, they are glad to help. I mean, who doesn&rsquo;t like to help someone who is actively seeking one&rsquo;s advice? Someone who shows respect and trust?</p>
 <p>I know it takes courage to ask an acquaintance or even a stranger for help. But ultimately, their input can help me to solve problems that I could not have solved by myself.</p>
 <p>What I&rsquo;ve learned through this experience is that hard work is not always the solution. That I&rsquo;m not an expert just because my job description says so. Therefore, I am allowed to get advice. And this advice can help me to get to the very next level.</p>
-<p>If you have any questions or comments, feel free to reach me via the contact field or 
-<a href="https://linkedin.com/in/jonathan-ratschat" target="_blank" rel="noopener">LinkedIn</a>.</p>
+<p><em>If you have any questions or comments, feel free to reach me via the contact field or 
+<a href="https://linkedin.com/in/jonathan-ratschat" target="_blank" rel="noopener">LinkedIn</a>.</em></p>
 
     </div>
 
@@ -935,15 +897,6 @@
 
 
 
-
-<section id="comments">
-  
-    <div id="commento"></div>
-
-<script src="https://cdn.commento.io/js/commento.js" defer></script>
-
-  
-</section>
 
 
 

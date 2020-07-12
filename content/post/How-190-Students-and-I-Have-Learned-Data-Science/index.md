@@ -133,7 +133,7 @@ Projects are fun. They enable you to get creative with the skills that you have 
 
 Starting to code is not an easy task. I have seen many people struggle with the first few steps. Once you’ve kept showing up, everything becomes more accessible. I hope that these strategies help you to enjoy coding and especially data science.
 
-*If you have any questions or comments, feel free to leave your feedback below. Also, you can reach me on [LinkedIn](https://linkedin.com/in/jonathan-ratschat) if you’d like to connect with me.*
+*If you have any questions or comments, feel free to reach me via the contact field or [LinkedIn](https://linkedin.com/in/jonathan-ratschat).*
 
 *Stay tuned, and see you in the next post!*
 

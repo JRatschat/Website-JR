@@ -172,5 +172,5 @@ But what collecting data the old way (not on Kaggle) ultimately does is that we 
 
 >Keep in mind that an analysis can only be as good as the quality of the data.
 
-If you have any questions or comments, feel free to reach me via the contact field or [LinkedIn](https://linkedin.com/in/jonathan-ratschat).
+*If you have any questions or comments, feel free to reach me via the contact field or [LinkedIn](https://linkedin.com/in/jonathan-ratschat).*
 

@@ -110,10 +110,10 @@ ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "
 
 [privacy]
   [privacy.disqus]
-    disable = false
+    disable = true
   [privacy.googleAnalytics]
     anonymizeIP = true
-    disable = false
+    disable = true
     respectDoNotTrack = true
     useSessionStorage = true
   [privacy.instagram]

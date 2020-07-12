@@ -68,5 +68,5 @@ I know it takes courage to ask an acquaintance or even a stranger for help. But 
 
 What I've learned through this experience is that hard work is not always the solution. That I'm not an expert just because my job description says so. Therefore, I am allowed to get advice. And this advice can help me to get to the very next level.
 
-If you have any questions or comments, feel free to reach me via the contact field or [LinkedIn](https://linkedin.com/in/jonathan-ratschat).
+*If you have any questions or comments, feel free to reach me via the contact field or [LinkedIn](https://linkedin.com/in/jonathan-ratschat).*
 

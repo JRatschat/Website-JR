@@ -205,44 +205,6 @@
 
 
 
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168828209-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-
-  function gtag() {
-      dataLayer.push(arguments);
-  }
-
-  function trackOutboundLink(url, target) {
-    gtag('event', 'click', {
-         'event_category': 'outbound',
-         'event_label': url,
-         'transport_type': 'beacon',
-         'event_callback': function () {
-           if (target !== '_blank') {
-             document.location = url;
-           }
-         }
-    });
-    console.debug("Outbound link clicked: " + url);
-  }
-
-  function onClickCallback(event) {
-    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
-      return;
-    }
-    trackOutboundLink(event.target, event.target.getAttribute('target'));  
-  }
-
-  gtag('js', new Date());
-  gtag('config', 'UA-168828209-1', { 'anonymize_ip': true });
-
-  
-  document.addEventListener('click', onClickCallback, false);
-</script>
-
-
   
 
 
@@ -785,8 +747,8 @@ Additionally, you’re building a portfolio that you could share with your commu
 <h3 id="3-take-your-skills-to-the-next-level-by-conducting-projects">3) Take your skills to the next level by conducting projects.</h3>
 <p>Projects are fun. They enable you to get creative with the skills that you have learned. If you want to learn something new, read some articles and try it out. Take one project at a time, make it harder, and reap the benefits.</p>
 <p>Starting to code is not an easy task. I have seen many people struggle with the first few steps. Once you’ve kept showing up, everything becomes more accessible. I hope that these strategies help you to enjoy coding and especially data science.</p>
-<p><em>If you have any questions or comments, feel free to leave your feedback below. Also, you can reach me on 
-<a href="https://linkedin.com/in/jonathan-ratschat" target="_blank" rel="noopener">LinkedIn</a> if you’d like to connect with me.</em></p>
+<p><em>If you have any questions or comments, feel free to reach me via the contact field or 
+<a href="https://linkedin.com/in/jonathan-ratschat" target="_blank" rel="noopener">LinkedIn</a>.</em></p>
 <p><em>Stay tuned, and see you in the next post!</em></p>
 
     </div>
@@ -982,15 +944,6 @@ Additionally, you’re building a portfolio that you could share with your commu
 
 
 
-<section id="comments">
-  
-    <div id="commento"></div>
-
-<script src="https://cdn.commento.io/js/commento.js" defer></script>
-
-  
-</section>
-
 
 
 
@@ -1003,6 +956,8 @@ Additionally, you’re building a portfolio that you could share with your commu
   <div class="article-widget content-widget-hr">
     <h3>Related</h3>
     <ul>
+      
+      <li><a href="/post/how-to-increase-the-interpretability-of-your-predictive-model/">How to Increase the Interpretability of Your Predictive Model</a></li>
       
       <li><a href="/post/how-to-collect-data-for-your-analysis/">How to Collect Data for Your Analysis</a></li>
       

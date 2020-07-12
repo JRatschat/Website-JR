@@ -205,44 +205,6 @@
 
 
 
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168828209-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-
-  function gtag() {
-      dataLayer.push(arguments);
-  }
-
-  function trackOutboundLink(url, target) {
-    gtag('event', 'click', {
-         'event_category': 'outbound',
-         'event_label': url,
-         'transport_type': 'beacon',
-         'event_callback': function () {
-           if (target !== '_blank') {
-             document.location = url;
-           }
-         }
-    });
-    console.debug("Outbound link clicked: " + url);
-  }
-
-  function onClickCallback(event) {
-    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
-      return;
-    }
-    trackOutboundLink(event.target, event.target.getAttribute('target'));  
-  }
-
-  gtag('js', new Date());
-  gtag('config', 'UA-168828209-1', { 'anonymize_ip': true });
-
-  
-  document.addEventListener('click', onClickCallback, false);
-</script>
-
-
   
 
 
@@ -279,7 +241,7 @@
   <meta property="og:description" content="A data science and personal insights blog and portfolio by Jonathan Ratschat"><meta property="og:image" content="/img/icon.png">
   <meta property="twitter:image" content="/img/icon.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2020-06-21T00:00:00&#43;00:00">
+    <meta property="og:updated_time" content="2020-07-12T00:00:00&#43;00:00">
   
 
   
@@ -912,6 +874,96 @@
   <div class="media-body">
 
     <h3 class="article-title mb-0 mt-0">
+      <a href="/post/how-to-increase-the-interpretability-of-your-predictive-model/" >How to Increase the Interpretability of Your Predictive Model</a>
+    </h3>
+
+    
+    <div class="article-style">
+      Practical insights from a business perspective.
+    </div>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jul 12, 2020
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    10 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+    
+    <a href="/post/how-to-increase-the-interpretability-of-your-predictive-model/" >
+      <img src="/post/how-to-increase-the-interpretability-of-your-predictive-model/featured_hu0b831e44f9fe0c51f9cfb15aaec859d1_374531_150x0_resize_q90_lanczos.jpg" alt="How to Increase the Interpretability of Your Predictive Model">
+    </a>
+    
+  </div>
+</div>
+
+      
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item">
+  <div class="media-body">
+
+    <h3 class="article-title mb-0 mt-0">
       <a href="/post/how-190-students-and-i-have-learned-data-science/" >How 190 Students and I Have Learned Data Science</a>
     </h3>
 
@@ -1253,97 +1305,14 @@
 
       
     
-      
-        
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/getting-to-a-hyperparameter-tuned-xgboost-model-in-no-time/" >Getting to a Hyperparameter-Tuned XGBoost Model in No Time</a>
-    </h3>
 
     
-    <div class="article-style">
-      How to fine-tune your first XGBoost model in R with random search.
+    <div class="see-all">
+      <a href="/post/">
+        See all posts
+        <i class="fas fa-angle-right"></i>
+      </a>
     </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    May 22, 2020
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    19 min read
-  </span>
-  
-
-  
-  
-  
-
-  
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-    
-    <a href="/post/getting-to-a-hyperparameter-tuned-xgboost-model-in-no-time/" >
-      <img src="/post/getting-to-a-hyperparameter-tuned-xgboost-model-in-no-time/featured_hubf6e398328edd96768429576f8056eef_20978_150x0_resize_q90_lanczos.jpg" alt="Getting to a Hyperparameter-Tuned XGBoost Model in No Time">
-    </a>
-    
-  </div>
-</div>
-
-      
-    
-
     
 
   </div>
