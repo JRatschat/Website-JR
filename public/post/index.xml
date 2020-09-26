@@ -5,12 +5,206 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Jonathan Ratschat 2020</copyright><lastBuildDate>Mon, 17 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Jonathan Ratschat 2020</copyright><lastBuildDate>Sat, 26 Sep 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon.png</url>
       <title>Blog</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>Ideology Classification of U.S. News through Sentiment</title>
+      <link>/post/ideology-classification-of-u.s.-news-through-sentiment/</link>
+      <pubDate>Sat, 26 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>/post/ideology-classification-of-u.s.-news-through-sentiment/</guid>
+      <description>&lt;p&gt;&lt;em&gt;This article was first published on 
+&lt;a href=&#34;https://medium.com/towards-artificial-intelligence/ideology-classification-of-u-s-news-through-sentiment-37d911f31f8c&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Medium&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I wanted to determine if news providers’ ideology can be objectively classified by performing some common natural language processing tasks on news articles.&lt;/p&gt;
+&lt;p&gt;But let’s start from the beginning…&lt;/p&gt;
+&lt;p&gt;Political division is a vital problem in the U.S. Nowadays, even what we eat, what we drive, and how we live is associated with either being Democrat or Republican. Decisions like 
+&lt;a href=&#34;https://www.bbc.com/news/world-us-canada-53477121&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;wearing or not wearing a mask&lt;/a&gt; become part of political identity.&lt;/p&gt;
+&lt;p&gt;This political division’s foundation was laid when people with college degrees moved to the cities, and less-educated people stayed in rural areas in the 1970s. Jobs, technologies, and industries followed accordingly, and the cultural differences between Democrats and Republicans were amplified with the emergence of partisan media and social media networks [1].&lt;/p&gt;
+&lt;p&gt;If you think about it: People are exposed to different kinds of information. What people read and what people hear plays a vital role in how they see the world.&lt;/p&gt;
+&lt;p&gt;So if people are exposed to a news provider that is considered as “far-right” and “ideologically driven,” for example, Breitbart News [2], the world view of this news provider could have a notable influence on their reader’s world view.&lt;/p&gt;
+&lt;p&gt;Would I recognize the political ideology of a news provider by just reading some of their articles? And how about other people? Imagine reading “far-right” articles and thinking that this is considered “normal”…&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This is why I started to think about how I can objectively classify news providers’ ideology.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Ultimately, I had the idea that Breitbart News would use, for example, more negative words when reporting about Joe Biden while using more positive comments for Trump than other news outlets.&lt;/p&gt;
+&lt;p&gt;Hence, articles written about a topic that agrees with a particular ideology would have a positive sentiment, while disagreeing issues would negatively affect sentiment.&lt;/p&gt;
+&lt;p&gt;Using data from four news providers and applying sentiment and topic models, I will test if my hypotheses are true. If you’re interested in knowing how I conducted the analysis using Python and R, please look at my 
+&lt;a href=&#34;https://github.com/JRatschat/US_News&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GitHub repository&lt;/a&gt;. There you can find everything that you need.&lt;/p&gt;
+&lt;h2 id=&#34;data&#34;&gt;Data&lt;/h2&gt;
+&lt;p&gt;I focused on articles from Breitbart News, Politico, Axios, and FiveThirtyEight for the analysis. Let’s first understand who these news providers are and what they stand for.&lt;/p&gt;
+&lt;p&gt;I have already introduced Breitbart News, but I will use their wording this time. They stand for “truthful reporting and the free and open exchange of ideas” because this is “essential to maintaining a robust democracy.” Also, they believe “in the greatness of America.”&lt;/p&gt;
+&lt;p&gt;Axios is a news provider that oughts to “deliver the clearest, smartest, most efficient, and trustworthy experience for audience and advertisers alike.” They claim not to follow any ideology. Also, their style of writing was described as a mix of Twitter and the Economist.&lt;/p&gt;
+&lt;p&gt;Politico’s main topics are politics and policy, and their goal is to become the dominant news source on these topics. The stand for “access to reliable information, nonpartisan journalism, and real-time tools” to “create, inform and engage a global citizenry.”&lt;/p&gt;
+&lt;p&gt;Last, FiveThirtyEight follows a data-driven coverage of politics and sports and uses common data visualization and statistical analyses to provide a unique news experience.&lt;/p&gt;
+&lt;p&gt;I have to admit: This is a wild mix. Not the typical news providers that you would find in a research paper. So why have I chosen these news providers?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;First, I needed some news sources that have a different ideology than Breitbart News. Axios explicitly states that it does not follow any ideology. Therefore, it should be neutral when it comes to ideology. The same goes for Politico that stands for nonpartisan news coverage. For FiveThirtyEight, it’s not as clear. I assumed a more left-leaning position due to their reports in the 2016 election that argued that “Donald Trump isn’t a real candidate” and gave him minimal chances of winning the election.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Second, I would have loved to gather articles from more well-known left-leaning news providers like the New York Times or Washington Post. Sadly, the providers that I had a look at often had websites based on Javascript (instead of HTML), making it harder to extract information with the approach that I used. Also, many news providers have a paywall making it impossible to extract articles without paying for it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After I had decided which news providers I wanted to analyze, I gathered articles on the political segments of these news providers. Also, I only extracted pieces from 2020 to have a somehow limited amount of topics.&lt;/p&gt;
+&lt;p&gt;These decisions led to a data set that consists of approximately 32.5k articles. Breitbart News contributes around 20k articles to the data set, while I only extracted around 500 items from FiveThirtyEight. Also, there are roughly 7.8k articles from Politico and 3.7k from Axios. Therefore, the findings for Axios, Breitbart News, and Politico should be more robust than the results for FiveThirtyEight.&lt;/p&gt;
+&lt;p&gt;I found it interesting to explore some of the differences between the news providers. You can see in the plot below that Axios publishes the shortest articles (it’s no surprise that they are compared to Twitter), closely followed by Breitbart News. Politico and FiveThirtyEight tend to have longer articles.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;./plot1.png&#34; alt=&#34;&#34;/&gt;
+  &lt;figcaption&gt;
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h2 id=&#34;sentiment&#34;&gt;Sentiment&lt;/h2&gt;
+&lt;p&gt;Now that I had extracted the data that I needed, it was time to calculate every article’s sentiment. I decided to use the well-established VADER model [3], which is predominantly used for social media postings. However, it was also tested with New York Times Editorials and achieved the best F1 score compared to other sentiment analysis lexicons. Hence, it can also be applied to other areas.&lt;/p&gt;
+&lt;p&gt;The model uses a generalizable sentiment lexicon. The list was inspired by the renowned word-banks LIWC, ANEW, and G.I., but the researchers also included emoticons and slang into the dictionary. Interestingly, it not only relies on a fixed sentiment score for each word but also incorporates grammatical and syntactic cues. To take some examples from their paper:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Booster words: “The service here is extremely good” has a stronger positive sentiment than “The service is good.”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Contrastive conjunction: “The food here is great, but the service is horrible.” VADER would sense a mixed sentiment with the latter part of the sentence being dominant.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Shifts in polarity: “The food here isn’t really all that great.” Although this sentence includes the positive word great, VADER can classify the negative sentiment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Although VADER was not built with newspaper articles in mind, I finally decided that its theoretical foundation would be a “good-enough” fit for my analysis.&lt;/p&gt;
+&lt;p&gt;Additionally, VADER becomes handy when working with more massive data sets because it is computationally cheap and does not require training data. Although other algorithms like Google’s BERT could have led to more accurate results, I still remembered the endless computing times that I had with another project, and I was not willing to go through this again.&lt;/p&gt;
+&lt;p&gt;When plotting the mean sentiment of the articles by week, two striking insights became apparent to me:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;There are differences in the sentiment scores between the news providers. FiveThirtyEight tends to have the most positive articles on average, while Breitbart News has the most negative articles on average compared to the other news providers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The news provider’s sentiment develops alike when looking at it over time. For example, all news providers see a strong negative drop of the sentiment score in week 23 and 24 with a recovery in the following weeks. This finding indicates that some topics or occurrences are classified as more positive or negative by VADER than other issues. For example, a major adverse event could have happened in week 23 because there is such a drop in sentiment scores.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;./plot2.png&#34; alt=&#34;&#34;/&gt;
+  &lt;figcaption&gt;
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h2 id=&#34;topics&#34;&gt;Topics&lt;/h2&gt;
+&lt;p&gt;Since different events are very likely to affect the news articles’ sentiment, it becomes crucial to classify the items into various topics. If not, the sentiment scores would be influenced by the topics, and ideology classification would not be feasible.&lt;/p&gt;
+&lt;p&gt;Latent Dirichlet Allocation (LDA) is an unsupervised machine learning model that extracts the main topics of a given set of words. It assumes that every document consists of a mix of different topics. By going through the documents, LDA extrapolates which topics could have generated them.&lt;/p&gt;
+&lt;p&gt;I used LDA to generate topics and to calculate the topic probabilities for each article. For the analysis, I only stored the subject with the highest topic probability. Ultimately, I ended up with 20 overarching topics for January to August 2020. Instead of looking at every topic in detail (which would be boring for you), let’s look at the most prominent issues.&lt;/p&gt;
+&lt;p&gt;You can see the number of articles per day in the below plot, depending on the topic. Some of the issues seem of relatively low importance, while other topics show a high presence.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;./plot3.png&#34; alt=&#34;&#34;/&gt;
+  &lt;figcaption&gt;
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;From first sight, Topic 6, 10, and 18 do look the most interesting. I created word clouds and looked at articles with the highest topic probabilities to better understand these topics.&lt;/p&gt;
+&lt;p&gt;By looking at the word cloud for Topic 6 and the articles with the highest topic contributions, it is relatively sure that these articles are about the Democratic presidential candidates.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;./plot4.png&#34; alt=&#34;&#34;/&gt;
+  &lt;figcaption&gt; Topic 6
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;pre&gt;&lt;code&gt;Topic Contribution: 100%
+&amp;quot;Why Bernie Sanders Lost&amp;quot; (FiveThirtyEight)
+
+Topic Contribution: 99%
+&amp;quot;Electile Dysfunction: Joe Biden Pulls Out Early from New Hampshire&amp;quot; (Breitbart News)
+
+Topic Contribution: 99%
+&amp;quot;Joe Biden says Iowa caucus results were a &amp;quot;gut punch&amp;quot;&amp;quot; (Axios)  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This overarching topic also makes sense when having a look at article count over time. Until March, this topic was of high interest to news providers and the public. Then the interest decreased after Buttigieg, Bloomberg, and Warren dropped out of the Democratic race. Interest increased shortly when Sanders suspended his campaign on April 8 and stayed low until Biden officially won the nomination on August 18.&lt;/p&gt;
+&lt;p&gt;So how about Topic 10?&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;./plot5.png&#34; alt=&#34;&#34;/&gt;
+  &lt;figcaption&gt; Topic 10
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;You guessed right: Topic 10 mostly consists of articles related to the coronavirus. The word cloud and the article count per day makes sense. I additionally checked the articles with the highest topic contributions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Topic Contribution: 99%
+&amp;quot;China Has Not Accepted U.S. Offers to Send CDC Experts to Aid in Coronavirus Fight&amp;quot; (Breitbart News)
+
+Topic Contribution: 99%
+&amp;quot;How many Americans have been tested for coronavirus?&amp;quot; (Politico)
+
+Topic Contribution: 99%
+&amp;quot;Azar: Coronavirus &#39;a fast-moving, constantly changing situation&amp;quot; (Politico)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Topic 18 seemed relatively easy to spot when only looking at the word cloud and the time trend. For me, it was screaming “Black Lives Matter”!&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;./plot6.png&#34; alt=&#34;&#34;/&gt;
+  &lt;figcaption&gt; Topic 18
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;But when I was assessing the articles with the highest topic contributions, I was confused first. Generally, LDA gave news articles with police operations the highest topic contributions.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Topic Contribution: 99%
+&amp;quot;Armed Homeowner Kills One Alleged Intruder, Wounds Second&amp;quot; (Breitbart News)
+
+Topic Contribution: 97%
+&amp;quot;Pennsylvania Homeowner Shoots Alleged Intruder Dead&amp;quot; (Breitbart News)
+
+Topic Contribution: 96%
+&amp;quot;Watch: Daytona Beach Police Shoot Alleged Armed Carjacker&amp;quot; (Breitbart News)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But this would have not explained why there was this upheaval in articles during the riots. When looking at articles with lower topic contribution scores, the articles that I had expected appeared.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Topic Contribution: 90%
+&amp;quot;Philadelphia Cops Injured with Chemical Burns During Violent Protests&amp;quot; (Breitbart News)
+
+Topic Contribution: 90%
+Title: &amp;quot;Protesters Set NYPD Cars Ablaze in Union Square&amp;quot; (Breitbart News)
+
+Topic Contribution: 88%
+Title: &amp;quot;Police Cars in LA, Chicago Damaged and Destroyed by Protesters&amp;quot; (Breitbart News)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This topic intrigued me. Most articles of Breitbart concerning this topic were in favor of the police. When I was looking at reports from Axios, this view diametrically changed to more centered items on what had happened to protesters. This is a significant difference in ideology, but it’s questionable if this difference can be tracked by news sentiment because both points of view should be rather harmful.&lt;/p&gt;
+&lt;h2 id=&#34;multiple-linear-regression&#34;&gt;Multiple Linear Regression&lt;/h2&gt;
+&lt;p&gt;After I generated variables for both sentiment and topic analyses, I was finally able to conduct a regression estimation. First, I ran a multiple linear regression to see how the topics and news providers (independent variables) are related to the news article’s sentiment (dependent variable). I used robust standard errors since the errors are heteroskedastic.&lt;/p&gt;
+&lt;p&gt;Sentimentᵢ = β₀ + β₁⨯Dominant_Topicᵢ + β₂⨯NewsProviderᵢ + 𝜀ᵢ&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/JRatschat/8d3a7fc5bc883ee0ab565832018d6b88.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;Axios together with Topic 0 is the base case and hidden in the intercept’s coefficient.
+Topic 5 (e.g., &lt;em&gt;attack, terrorist, hong kong, iran&lt;/em&gt;) and 18 (e.g., &lt;em&gt;police, riots, black&lt;/em&gt;) is associated with more negative sentiment while topic 6 (e.g., &lt;em&gt;biden, democrat, campaign&lt;/em&gt;) is associated with a more positive effect on sentiment. Also, Politico and FiveThirtyEight tend to report more positively than Axios (as indicated in the intercept) and Breitbart News.&lt;/p&gt;
+&lt;p&gt;But we have to be careful here because the p-value of Breitbart News is nowhere near the commonly used significance levels. Therefore, we can’t reject the Null hypothesis that there is no difference in conditional means between Breitbart News and its articles’ sentiment.&lt;/p&gt;
+&lt;p&gt;Although this regression enables some first insights, it is not enough to understand the underlying ideology of a news provider. Remember: I hypothesized that news providers would have differing sentiments about different topics.&lt;/p&gt;
+&lt;h2 id=&#34;multiple-linear-regression-with-interaction-effects&#34;&gt;Multiple Linear Regression with Interaction Effects&lt;/h2&gt;
+&lt;p&gt;Therefore, I decided to conduct a multiple linear regression with interaction effects. By using interaction effects, it is now feasible to analyze the combined effects of the dominant topics and news providers. Also, I still used robust standard errors in the estimation.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://gist.github.com/JRatschat/7c3548b8d130e3d399d7fa51edcc479c&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Sentimentᵢ = β₀ + β₁⨯Dominant_Topicᵢ + β₂⨯NewsProviderᵢ + β₃⨯(Dominant_Topicᵢ⨯NewsProviderᵢ) + 𝜀 &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Some of the p-values of the topics and also Breitbart News and Politico are not near the commonly used significance levels.&lt;/p&gt;
+&lt;p&gt;Still, in the plot below you can see the predicted sentiment per topic and news provider. When searching for differences in sentiment and checking the p-values for each interaction effect in the 
+&lt;a href=&#34;https://gist.github.com/JRatschat/7c3548b8d130e3d399d7fa51edcc479c&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;regression table&lt;/a&gt;, only Topic 6 seems interesting. Remember: this topic is predominantly about the Democratic presidential candidates.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;./plot7.png&#34; alt=&#34;&#34;/&gt;
+  &lt;figcaption&gt;
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;pre&gt;&lt;code&gt;**Predicted Sentiment per News Provider for Topic 6**
+Axios: 0.54
+Breitbart News: 0.44
+FiveThirtyEight: 0.75
+Politico: 0.66
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Breitbart did indeed have the articles with the lowest sentiment. When taking a close look at the interaction terms for Topic 6, it becomes apparent that the coefficient of Breitbart News is the only one with a negative association.
+Still, I have to admit that I was somehow disappointed. Only one out of 20 topics showed a result that somehow followed my hypothesis. Also, the differences between the predicted sentiment scores seemed not as high as I would have expected.&lt;/p&gt;
+&lt;h2 id=&#34;assessment&#34;&gt;Assessment&lt;/h2&gt;
+&lt;p&gt;So what did I do? And how did it go? What did I learn?&lt;/p&gt;
+&lt;p&gt;First, I gathered data from four different news providers. Pretty amazing what one can do with a web crawler like scrapy. I was incredibly happy that I was able to gather the articles from the news provider’s websites. A downer was, however, that I could not scrape articles from the New York Times or the Washington Post. These news providers would have better reflected the Democratic element for my analysis.&lt;/p&gt;
+&lt;p&gt;Second, calculating the sentiment with the VADER module and looking at it over time led to interesting insights. I was able to spot that the news provider’s sentiment develops alike over time. This finding led me to the hypothesis that topics or occurrences are inherently either positive or negative. Big up- or downswings can happen when major events occur.&lt;/p&gt;
+&lt;p&gt;Third, classifying news articles into topics using LDA went smoothly. I was impressed by how topics like the “Democratic presidential nomination” or the “Coronavirus” were accurately classified and how much sense the article count over time made.&lt;/p&gt;
+&lt;p&gt;Exploring the topics led to realizing the first notable difference between Breitbart News and the other news providers: One can influence an event’s perspective. Breitbart News focused predominantly on what did happen to police officers during protests and riots while the others focused more on the protesters. This difference alone is a strong indicator of a news provider’s ideology.&lt;/p&gt;
+&lt;p&gt;Third, conducting the regression estimations presented answers to some of the hypotheses that I had made. Yes, sentiment scores are very different, depending on the topic. Also, the estimation did shed light on the general tendency of a news provider’s sentiment. But this alone was of no help in classifying a news provider’s ideology. Only the interaction effects of Topic 6 were promising, but sadly this topic was the only one where my hypothesis somehow made sense.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Ultimately, I think that my approach to classifying ideology by comparing sentiment scores failed. I still like the idea, but it seems that topics that are perceived as positive or negative depending on the political view are relatively rare.&lt;/p&gt;
+&lt;p&gt;But I found one very interesting insight during the topic analysis: News providers reported quite differently about the Black Lives Matters protests. Sadly (for my analysis), the sentiment was not affected by this difference.&lt;/p&gt;
+&lt;p&gt;Still, I have done some groundwork for further investigations. If I have some more time and you are interested in it, I could imagine myself going back to the Black Lives Matter topic. Finding some methods that can objectively show the differences that I indicated would be awesome.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;If you have any questions or comments, feel free to reach me via the contact field or 
+&lt;a href=&#34;https://linkedin.com/in/jonathan-ratschat&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LinkedIn&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Stay tuned, and see you in the next post!&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;p&gt;[1] &lt;a href=&#34;https://edition.cnn.com/interactive/2019/11/opinions/fractured-states-of-america/part-one-fredrick/&#34;&gt;https://edition.cnn.com/interactive/2019/11/opinions/fractured-states-of-america/part-one-fredrick/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[2] &lt;a href=&#34;https://en.wikipedia.org/wiki/Breitbart_News&#34;&gt;https://en.wikipedia.org/wiki/Breitbart_News&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[3] Hutto, C.J. &amp;amp; Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for Sentiment Analysis of Social Media Text. Eighth International Conference on Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>What Pete Buttigieg Has to Say About Data-Driven Decision Making</title>
@@ -87,6 +281,7 @@
 &lt;p&gt;I enjoyed reading his book for several reasons. Although I was excited about his chapter on data-driven decisions (Chapter 11-Subconscious Operations), I also learned much more about American politics and the Rust Belt’s struggles.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;If you have any questions or comments, feel free to reach me via the contact field or 
 &lt;a href=&#34;https://linkedin.com/in/jonathan-ratschat&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LinkedIn&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Stay tuned, and see you in the next post!&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;p&gt;[1] Pete Buttigieg (2019), Shortest Way Home: One Mayor’s Challenge and a Model for America’s Future, Liveright, pp. 388–418.&lt;/p&gt;
 </description>
@@ -228,10 +423,9 @@ Indeed, the more complex model is better in predicting who’s going to churn an
 &lt;p&gt;It is vital that we understand our predictive model and that this model captures the generalized underlying trends of the data. If not, the company faces a ticking time bomb. All could go well until it doesn’t anymore.&lt;/p&gt;
 &lt;p&gt;Also, we need to able to explain our results to relevant stakeholders. Explaining predictive models and first foremost SHAP values to someone who has trouble understanding basic statistics is hard! Still, these stakeholders are often the decision-makers, so we must make sure that we can convince them that our model really works in practice.&lt;/p&gt;
 &lt;p&gt;Besides mitigating possible risks by increasing the trust in our model, we can get additional insights that we wouldn’t get with simpler models. This can be highly relevant. Especially for marketing departments who are always interested in understanding their customers.&lt;/p&gt;
-&lt;p&gt;If you have any questions or comments, feel free to leave your feedback below. Also, you can reach me on LinkedIn if you’d like to connect with me.&lt;/p&gt;
-&lt;p&gt;Stay tuned, and see you in the next post!&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;If you have any questions or comments, feel free to reach me via the contact field or 
 &lt;a href=&#34;https://linkedin.com/in/jonathan-ratschat&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LinkedIn&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Stay tuned, and see you in the next post!&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;p&gt;[1] Ribeiro, M. T., Singh, S. &amp;amp; Guestrin, C. (2016), “Why should I trust you?”: Explaining the predictions of any classifier, in B. Krishnapuram &amp;amp; M. Shah, eds, ‘KDD ’16: Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining’, pp. 1135–1144.&lt;/p&gt;
 &lt;p&gt;[2] Keaveney, S. M. (1995), ‘Customer switching behavior in service industries: An exploratory study’, Journal of Marketing 59, 71–82.&lt;/p&gt;

@@ -178,12 +178,9 @@ Also, we need to able to explain our results to relevant stakeholders. Explainin
 
 Besides mitigating possible risks by increasing the trust in our model, we can get additional insights that we wouldn’t get with simpler models. This can be highly relevant. Especially for marketing departments who are always interested in understanding their customers.
 
-If you have any questions or comments, feel free to leave your feedback below. Also, you can reach me on LinkedIn if you’d like to connect with me.
-
-Stay tuned, and see you in the next post!
-
-
 *If you have any questions or comments, feel free to reach me via the contact field or [LinkedIn](https://linkedin.com/in/jonathan-ratschat).*
+
+*Stay tuned, and see you in the next post!*
 
 ## References
 

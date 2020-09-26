@@ -125,6 +125,8 @@ I enjoyed reading his book for several reasons. Although I was excited about his
 
 *If you have any questions or comments, feel free to reach me via the contact field or [LinkedIn](https://linkedin.com/in/jonathan-ratschat).*
 
+*Stay tuned, and see you in the next post!*
+
 ## References
 
 [1] Pete Buttigieg (2019), Shortest Way Home: One Mayor’s Challenge and a Model for America’s Future, Liveright, pp. 388–418.
