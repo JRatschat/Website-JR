@@ -2,20 +2,20 @@
 authors:
 - admin
 bio: Experience-driven. Sharing my lessons learned. Passionate about data. Preparing students for the digital future through TechAcademy.
-education:
-  courses:
-  - course: MS Business Administration
-    institution: Goethe University Frankfurt
-    year:
-  - course: BS International Business Administration
-    institution: Fulda University of Applied Sciences
-    year:
+#education:
+#  courses:
+#  - course: MS Business Administration
+#    institution: Goethe University Frankfurt
+#    year:
+#  - course: BS International Business Administration
+#    institution: Fulda University of Applied Sciences
+#    year:
 email: "j.ratschat@protonmail.com"
-interests:
-- Machine Learning
-- Data Science
-- Business Development
-- Sales
+#interests:
+#- Machine Learning
+#- Data Science
+#- Business Development
+#- Sales
 organizations:
 - name: Goethe University Frankfurt
   url: "https://www.wiwi.uni-frankfurt.de/startseite.html"
@@ -40,8 +40,10 @@ user_groups:
 - Visitors
 ---
 
-Luckily, I get to work with a lot of data. Applying econometric or machine learning methods are fun. Why? Because I like to code. Also, having exciting results once I have finished a project is satisfying. 
+I am passionate about data. Why? Because data can uncover hidden structures and enable informed decisions. For me, this is an art. Instead of using a brush and paint, I use various programming languages and econometric or machine learning methods to create analyses that generate fascinating insights.
 
-In my spare time, I am active at TechAcademy. This student initiative prepares students for the digital future in the fields of Data Science and Web Development. My role here is to create partnerships with companies. Lots of work, but it enables me to meet inspiring people. Also, pitching (aka selling) is a skill that is built through experience - not through lectures.
+>I want to share this fascination with others.
 
-Also, I like to write down my learnings every now and then. Keeping it to myself would be selfish :stuck_out_tongue_winking_eye: Therefore, I am sharing it here :rocket:
+At TechAcademy, a student initiative at Goethe University, we prepare students for the digital future. We are convinced that everyone can benefit from knowing how to code. That's why we do our best to pass on this knowledge through online courses, group projects, and inspiring events.
+
+I also like to share my projects and insights from time to time. Therefore I have set up this website to keep you up to date :rocket:
