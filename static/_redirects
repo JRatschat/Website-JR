@@ -2,5 +2,3 @@ http://jratschat.rbind.io/*                     https://jonathanratschat.rbind.i
 https://frosty-cori-4e5483.netlify.app/         https://jonathanratschat.rbind.io/:splat  301!
 https://jratschat.rbind.io/*                    https://jonathanratschat.rbind.io/:splat  301!
 http://jonathanratschat.rbind.io/*             https://jonathanratschat.rbind.io/:splat  301!
-
-jonathanratschat CNAME frosty-cori-4e5483.netlify.app.
