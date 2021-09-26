@@ -31,15 +31,15 @@ But what if I told you that joining a student initiative has been one of the bes
 
 What I want to share is my journey with a so-called student initiative. Not any student initiative. A student initiative driven by a specific purpose and great people.
 
-The first time I heard about TechAcademy was through a friend. At that time, my life was hectic, so I asked some questions and probably quickly switched the topic. “Good for him that he has the time to start a new student initiative without getting paid for it” I thought to myself. But since I was too focused on my own life, I did not hear him out.
+The first time I heard about TechAcademy was through a friend. At that time, my life was hectic, so I asked some questions and probably quickly switched the topic. “Good for him that he has the time to start a new student initiative without getting paid for it”, I thought to myself. But since I was too focused on my own life, I did not hear him out.
 
-Some months passed, my life changed dramatically, and of a sudden, I saw an announcement on LinkedIn that this initiative was finally ready to take off. This time, I was more than interested. Why? Because I recognized it had a clear purpose. And this purpose related to me.
+Some months passed, my life changed dramatically, and of a sudden, I saw an announcement on LinkedIn that this initiative was finally ready to take off. This time, I was more than interested because I recognized it had a clear purpose. And this purpose related to me.
 
 So what does TechAcademy do? TechAcademy prepares students for the digital future. Each semester, they offer 70 students from all faculties the opportunity to acquire programming skills in the fields of Data Science and Web Development.
 
 I had learned some lines of code during my first semester, but I’ve never had the opportunity to apply it. Without having any projects or people that were using this programming language, I quickly stopped. But remembering that I once wanted to improve my skills, I could directly see that they were offering a valuable program.
 
-So what did I do? I quickly reached out to one of the founders and offered my help. Why? I don’t know. Maybe I wanted to meet some new people, and perhaps I wanted to be part of something bigger than me. As I said, I don’t know.
+So I quickly reached out to one of the founders and offered my help. Why? I don’t know. Maybe I wanted to meet some new people, and perhaps I wanted to be part of something bigger than me. As I said, I don’t know.
 
 Fast forward one and a half years. What has happened in this time is fantastic. I got to meet so many inspiring people, learned a lot professionally, and we, as a team, have been able to have an impact on the lives of over 190 students.
 
@@ -51,7 +51,7 @@ When working at my student initiative, I got to meet a lot of people.
 
 First, there is my team with whom I organize everything. I won’t lie. Being in a student initiative involves a lot of work. But through that work and the shared purpose, I got close to my team. We see each other every week, which led to new friendships. And these people are cool, driven, and inspiring — precisely the people I want to call friends.
 
-Second, I met so many participants. Each and everyone is different. At TechAcademy, we are open to every faculty. Why? Because each and everyone lives in a digital world that is exponentially changing.
+Second, I met so many participants. Each and everyone is different. At TechAcademy, we are open to every faculty because each and everyone lives in a digital world that is exponentially changing.
 
 Luckily, we do not have just business students that participate in our program. I mean, when and where do I meet mathematics, physics, teaching, or humanities students all in one place? I find it interesting to get to know different perspectives.
 

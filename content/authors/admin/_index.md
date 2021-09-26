@@ -1,7 +1,7 @@
 ---
 authors:
 - admin
-bio: Experience-driven. Sharing my lessons learned. Passionate about data. Preparing students for the digital future through TechAcademy.
+bio: Experience-driven. Sharing my lessons learned. Passionate about data.
 #education:
 #  courses:
 #  - course: MS Business Administration
@@ -17,9 +17,9 @@ email: "j.ratschat@protonmail.com"
 #- Business Development
 #- Sales
 organizations:
-- name: Goethe University Frankfurt
-  url: "https://www.wiwi.uni-frankfurt.de/startseite.html"
-role: Masters' student
+- name: ING Germany
+  url: "https://www.ing.de/"
+role: Data Science Trainee
 social:
 - icon: envelope
   icon_pack: fas
@@ -40,10 +40,10 @@ user_groups:
 - Visitors
 ---
 
-I am passionate about data. Why? Because data can uncover hidden structures and enable informed decisions. For me, this is an art. Instead of using a brush and paint, I use various programming languages and econometric or machine learning methods to create analyses that generate fascinating insights.
+I am passionate about data. Why? Because data can uncover hidden structures and enable informed decisions. Hence, I use various econometric or machine learning methods to create analyses that generate fascinating insights.
 
 >I want to share this fascination with others.
 
-At TechAcademy, a student initiative at Goethe University, we prepare students for the digital future. We are convinced that everyone can benefit from knowing how to code. That's why we do our best to pass on this knowledge through online courses, group projects, and inspiring events.
+At TechAcademy, a student initiative at Goethe University, we share our passion with students by preparing them for the digital future. We are convinced that everyone can benefit from knowing how to code. That's why we do our best to pass on this knowledge through online courses, group projects, and inspiring events.
 
-I also like to share my projects and insights from time to time. Therefore I have set up this website to keep you up to date :rocket:
+Also, I like to share my projects and insights from time to time. Therefore, I have set up this website to keep you up to date :rocket:

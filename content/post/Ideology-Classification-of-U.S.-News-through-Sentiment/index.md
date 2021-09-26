@@ -7,8 +7,8 @@ image:
   focal_point: Smart
 lastmod: "2020-09-26T00:00:00Z"
 projects: []
-subtitle: 'Not as easy as I thought.'
-summary: "Not as easy as I thought."
+subtitle: 'Exposing the partisanship of news providers.'
+summary: "Exposing the partisanship of news providers."
 tags: 
 - Data Science
 title: 'Ideology Classification of U.S. News through Sentiment'
