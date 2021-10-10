@@ -10,7 +10,7 @@ bio: Experience-driven. Sharing my lessons learned. Passionate about data.
 #  - course: BS International Business Administration
 #    institution: Fulda University of Applied Sciences
 #    year:
-email: "j.ratschat@protonmail.com"
+# email: 
 #interests:
 #- Machine Learning
 #- Data Science
