@@ -40,10 +40,8 @@ user_groups:
 - Visitors
 ---
 
-I am passionate about data. Why? Because data can uncover hidden structures and enable informed decisions. Hence, I use various econometric or machine learning methods to create analyses that generate fascinating insights.
+I am passionate about data because it can uncover hidden structures and enable informed decisions. Hence, I use various econometric or machine learning methods to create analyses that (supposedly) generate fascinating insights.
 
 >I want to share this fascination with others.
 
-At TechAcademy, a student initiative at Goethe University, we share our passion with students by preparing them for the digital future. We are convinced that everyone can benefit from knowing how to code. That's why we do our best to pass on this knowledge through online courses, group projects, and inspiring events.
-
-Also, I like to share my projects and insights from time to time. Therefore, I have set up this website to keep you up to date :rocket:
+Feel free to have a look at my projects and insights that I post here from time to time :rocket:
