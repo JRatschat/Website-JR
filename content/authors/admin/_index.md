@@ -40,7 +40,9 @@ user_groups:
 - Visitors
 ---
 
-I am passionate about data because it can uncover hidden structures and enable informed decisions. Hence, I use various econometric or machine learning methods to create analyses that (supposedly) generate fascinating insights.
+I am passionate about data because it can uncover hidden structures and enable informed decisions. 
+
+Hence, I use various econometric or machine learning methods to create analyses that (supposedly) generate fascinating insights.
 
 >I want to share this fascination with others.
 
